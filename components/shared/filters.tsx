@@ -1,40 +1,29 @@
 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { RangeSlider, Title } from '@/components/shared'
 import { Input } from '@/components/ui'
 import { CheckboxFiltersGroup } from '@/components/shared/checkbox-filters-group'
-import { useFilterIngredients } from '@/hooks/useFilterIngredients'
-import { useSet } from 'react-use'
+import { useFilters, useIngredients, useQueryFilters } from '@/hooks'
 
 interface Props {
   className?: string
 }
 
-interface PriceProps {
-  priceFrom: number
-  priceTo: number
-}
-
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading, onAddId, selectedIngredients } = useFilterIngredients()
-  const [sizes, { toggle: toggleSizes }] = useSet(new Set<String>([]))
-  const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<String>([]))
-  const [prices, setPrice] = React.useState<PriceProps>({
-    priceFrom: 0,
-    priceTo: 1000,
-  })
+  const { ingredients, loading } = useIngredients()
+  const filters = useFilters()
+  useQueryFilters(filters)
 
   const items = ingredients.map(item => ({
     value: String(item.id),
     text: item.name,
   }))
 
-  const updatePrice = (name: keyof PriceProps, value: number) => {
-    setPrice({ ...prices, [name]: value })
+  const updatePrices = (prices: number[]) => {
+    filters.setPrices('priceFrom', prices[0])
+    filters.setPrices('priceTo', prices[1])
   }
-  useEffect(() => {
-    console.log({ sizes, pizzaTypes, prices, selectedIngredients })
-  }, [sizes, pizzaTypes, prices, selectedIngredients])
+
   return (
     <div className={className}>
       <Title text={'Фильтрация'} size={'sm'} className={'mb-5 font-bold'} />
@@ -53,8 +42,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
             value: '2',
           },
         ]}
-        onClickCheckbox={togglePizzaTypes}
-        selectedValues={pizzaTypes}
+        onClickCheckbox={filters.setPizzaTypes}
+        selectedValues={filters.pizzaTypes}
       />
 
       <CheckboxFiltersGroup
@@ -75,8 +64,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
             value: '40',
           },
         ]}
-        onClickCheckbox={toggleSizes}
-        selectedValues={sizes}
+        onClickCheckbox={filters.setSizes}
+        selectedValues={filters.sizes}
       />
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
         <p className="font-bold mb-3">Цена от и до:</p>
@@ -86,24 +75,24 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="0"
             min={0}
             max={1000}
-            value={String(prices.priceFrom)}
-            onChange={e => updatePrice('priceFrom', Number(e.target.value))}
+            value={String(filters.prices.priceFrom)}
+            onChange={e => filters.setPrices('priceFrom', Number(e.target.value))}
           />
           <Input
             type="number"
             min={100}
             max={1000}
             placeholder="1000"
-            value={String(prices.priceTo)}
-            onChange={e => updatePrice('priceTo', Number(e.target.value))}
+            value={String(filters.prices.priceTo)}
+            onChange={e => filters.setPrices('priceTo', Number(e.target.value))}
           />
         </div>
         <RangeSlider
-          onValueChange={([priceFrom, priceTo]) => setPrice({ priceFrom, priceTo })}
+          onValueChange={updatePrices}
           min={0}
           max={1000}
           step={10}
-          value={[prices.priceFrom, prices.priceTo]}
+          value={[filters.prices.priceFrom || 0, filters.prices.priceTo || 1000]}
         />
       </div>
       <CheckboxFiltersGroup
@@ -114,8 +103,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         limit={6}
         items={items}
         defaultItems={items.slice(0, 6)}
-        onClickCheckbox={onAddId}
-        selectedValues={selectedIngredients}
+        onClickCheckbox={filters.setSelectedIngredients}
+        selectedValues={filters.selectedIngredients}
       />
     </div>
   )
