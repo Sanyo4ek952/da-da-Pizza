@@ -1,17 +1,11 @@
-import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/shared'
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
   variable: '--font-nunito',
   weight: ['400', '500', '600', '700', '800', '900'],
 })
-export const metadata: Metadata = {
-  title: 'Da Da Pizza | Главная',
-  description: 'Pizza',
-}
 
 export default function RootLayout({
   children,
@@ -20,10 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${nunito.variable} antialiased`}>
-      <body className="font-sans">
-        <Header />
-        <main className={'min-h-screen'}>{children}</main>
-      </body>
+      <head>
+        <link data-rh="true" rel={'icon'} href={'/logo.png'} />
+      </head>
+      <body className={`${nunito.variable} antialiased`}>{children}</body>
     </html>
   )
 }
