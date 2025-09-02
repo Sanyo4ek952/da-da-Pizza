@@ -2,7 +2,7 @@
 import { FC } from 'react'
 import { cn } from '@/lib/utils'
 import { ProductWithRelations } from '@/@types/prisma'
-import { Title } from '@/components/shared'
+import { ChoosePizzaForm } from '@/components/shared'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useRouter } from 'next/navigation'
 
@@ -20,7 +20,12 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
           'p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden'
         )}
       >
-        <Title text={product.name} />
+        <ChoosePizzaForm
+          items={product.items}
+          imageUrl={product.imageUrl}
+          name={product.name}
+          ingredients={product.ingredients}
+        />
       </DialogContent>
     </Dialog>
   )
