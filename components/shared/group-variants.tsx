@@ -16,13 +16,7 @@ interface Props {
   value?: string
 }
 
-export const GroupVariants: React.FC<Props> = ({
-  className,
-  onClick,
-  selectedValue,
-  value,
-  items,
-}) => {
+export const GroupVariants: React.FC<Props> = ({ className, onClick, selectedValue, items }) => {
   return (
     <div className={cn(className, 'flex justify-between bg-[#F3F3F7] rounded-3xl p-1 select-none')}>
       {items.map(item => (

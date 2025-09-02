@@ -15,7 +15,7 @@ interface Props {
   searchInputPlaceholder?: string
   onClickCheckbox?: (id: string) => void
   defaultValue?: string
-  selectedValues?: Set<String>
+  selectedValues?: Set<string>
   name?: string
 }
 
@@ -24,7 +24,6 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   title,
   items,
   defaultItems,
-  defaultValue,
   name,
   loading,
   limit = 5,
