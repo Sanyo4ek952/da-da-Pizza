@@ -1,0 +1,27 @@
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { FlatCompat } from '@eslint/eslintrc'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+})
+
+const eslintConfig = [
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  {
+    extends: [
+      '@it-incubator/stylelint-config', // базовые правила
+      'stylelint-config-recommended-scss', // правила для SCSS
+      'stylelint-config-tailwindcss', // правила для Tailwind
+    ],
+    plugins: ['stylelint-scss', 'stylelint-order'],
+    rules: {
+      'jsx-a11y/alt-text': 'off',
+    },
+  },
+]
+
+export default eslintConfig

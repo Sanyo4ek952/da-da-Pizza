@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { ProductWithRelations } from '@/@types/prisma'
 import { ChoosePizzaForm, ChooseProductForm } from '@/shared/components/shared'
-import { Dialog, DialogContent } from '@/shared/components/ui/dialog'
+import { Dialog, DialogContent, DialogDescription, DialogTitle, } from '@/shared/components/ui/dialog'
 import { useRouter } from 'next/navigation'
 
 interface Props {
@@ -16,6 +16,10 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
 
   return (
     <Dialog onOpenChange={() => router.back()} open={Boolean(product)}>
+      <DialogDescription>
+        Здесь вы можете выбрать размер и ингредиенты для вашей пиццы.
+      </DialogDescription>
+      <DialogTitle>Описание пиццы</DialogTitle>
       <DialogContent
         className={cn(
           className,
@@ -23,7 +27,12 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
         )}
       >
         {isPizzaForm ? (
-          <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} />
+          <ChoosePizzaForm
+            ingredients={product.ingredients}
+            imageUrl={product.imageUrl}
+            name={product.name}
+            items={product.items}
+          />
         ) : (
           <ChooseProductForm
             items={product.items}

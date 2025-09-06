@@ -23,6 +23,5 @@ export default async function ProductModalPage({ params }: { params: { id: strin
   if (!product) {
     return notFound()
   }
-  console.log(product)
   return <ChooseProductModal product={product} />
 }

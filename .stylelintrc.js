@@ -5,6 +5,8 @@ module.exports = {
     'stylelint-config-tailwindcss', // правила для Tailwind
   ],
   plugins: ['stylelint-scss', 'stylelint-order'],
-  rules: {},
+  rules: {
+    'jsx-a11y/alt-text': 'off',
+  },
   ignoreFiles: ['node_modules/**', 'dist/**'],
 }
