@@ -1,10 +1,11 @@
+'use client'
 import React, { FC } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { GroupVariants, IngredientItem, PizzaImage, Title } from '@/shared/components/shared'
 import { Button } from '@/shared/components/ui'
-import { PizzaSize, pizzaSizes, PizzaType, pizzaTypes } from '@/shared/constants/pizza'
+import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza'
 import { Ingredient, ProductItem } from '@prisma/client'
-import { useSet } from 'react-use'
+import { getPizzaDetails, usePizzaOptions } from '@/shared/lib'
 
 interface Props {
   imageUrl: string
@@ -22,13 +23,25 @@ export const ChoosePizzaForm: FC<Props> = ({
   items,
   className,
 }) => {
-  const [size, setSize] = React.useState<PizzaSize>(30)
-  const [type, setType] = React.useState<PizzaType>(1)
-
-  const [selectedIngredients, { toggle: addIngredients }] = useSet(new Set<number>([]))
-
-  const textDetails = `${size} см, традиционное тесто ${size}`
-  const totalPrice = 350
+  const {
+    size,
+    setSize,
+    selectedIngredients,
+    addIngredients,
+    setType,
+    type,
+    availableSizes: availablePizzaSizes,
+  } = usePizzaOptions(items)
+  const { textDetails, totalPrice } = getPizzaDetails(
+    type,
+    size,
+    items,
+    ingredients,
+    selectedIngredients
+  )
+  const handleClick = () => {
+    onClickAddCart?.()
+  }
   return (
     <div className={cn(className, 'flex flex-1')}>
       <PizzaImage imageUrl={imageUrl} size={size} className={'flex-1'} />
@@ -39,7 +52,7 @@ export const ChoosePizzaForm: FC<Props> = ({
           <GroupVariants
             onClick={value => setSize(Number(value) as PizzaSize)}
             value={String(size)}
-            items={pizzaSizes}
+            items={availablePizzaSizes}
           />
           <GroupVariants
             onClick={value => setType(Number(value) as PizzaType)}

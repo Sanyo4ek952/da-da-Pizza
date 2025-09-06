@@ -2,7 +2,7 @@
 import React from 'react'
 import { cn } from '@/shared/lib/utils'
 
-interface Variant {
+export interface Variant {
   name: string
   value: string
   disabled?: boolean
