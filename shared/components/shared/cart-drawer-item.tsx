@@ -41,4 +41,3 @@ export const CartDrawerItem: React.FC<Props> = ({
     </div>
   );
 };
-//TODO 11:12

@@ -1,23 +1,39 @@
-'use client'
-import { FC } from 'react'
-import { cn } from '@/shared/lib/utils'
-import { ProductWithRelations } from '@/@types/prisma'
-import { ChoosePizzaForm, ChooseProductForm } from '@/shared/components/shared'
+'use client';
+import { FC } from 'react';
+import { cn } from '@/shared/lib/utils';
+import { ProductWithRelations } from '@/@types/prisma';
+import { ChoosePizzaForm, ChooseProductForm } from '@/shared/components/shared';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from '@/shared/components/ui/dialog'
-import { useRouter } from 'next/navigation'
+} from '@/shared/components/ui/dialog';
+import { useRouter } from 'next/navigation';
+import { useCartStore } from '@/shared/store';
 
 interface Props {
-  className?: string
-  product: ProductWithRelations
+  className?: string;
+  product: ProductWithRelations;
 }
 export const ChooseProductModal: FC<Props> = ({ className, product }) => {
-  const router = useRouter()
-  const isPizzaForm = Boolean(product.items[0].pizzaType)
+  const router = useRouter();
+  const firstItem = product.items[0];
+  const isPizzaForm = Boolean(firstItem.pizzaType);
+  const addCartItem = useCartStore((state) => state.addCartItem);
+
+  const onAddProduct = () => {
+    addCartItem({
+      productItemId: firstItem.id,
+      ingredients: [],
+    });
+  };
+  const onAddPizza = (productItemId: number, ingredients: number[]) => {
+    addCartItem({
+      productItemId,
+      ingredients,
+    });
+  };
 
   return (
     <Dialog onOpenChange={() => router.back()} open={Boolean(product)}>
@@ -37,9 +53,12 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
             imageUrl={product.imageUrl}
             name={product.name}
             items={product.items}
+            onSubmit={onAddPizza}
           />
         ) : (
           <ChooseProductForm
+            onSubmit={onAddProduct}
+            price={firstItem.price}
             items={product.items}
             imageUrl={product.imageUrl}
             name={product.name}
@@ -48,5 +67,5 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
         )}
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};
