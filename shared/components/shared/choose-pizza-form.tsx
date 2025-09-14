@@ -1,7 +1,12 @@
 'use client';
 import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
-import { GroupVariants, IngredientItem, PizzaImage, Title, } from '@/shared/components/shared';
+import {
+  GroupVariants,
+  IngredientItem,
+  PizzaImage,
+  Title,
+} from '@/shared/components/shared';
 import { Button } from '@/shared/components/ui';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';

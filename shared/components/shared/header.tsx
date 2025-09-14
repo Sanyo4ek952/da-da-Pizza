@@ -1,14 +1,14 @@
-import React from 'react'
-import { cn } from '@/shared/lib/utils'
-import Image from 'next/image'
-import { Button } from '@/shared/components/ui'
-import { Container, SearchInput } from '@/shared/components/shared'
-import { User } from 'lucide-react'
-import Link from 'next/link'
-import { CartButton } from '@/shared/components/shared/cart-button'
+import React from 'react';
+import { cn } from '@/shared/lib/utils';
+import Image from 'next/image';
+import { Button } from '@/shared/components/ui';
+import { Container, SearchInput } from '@/shared/components/shared';
+import { User } from 'lucide-react';
+import Link from 'next/link';
+import { CartButton } from '@/shared/components/shared/cart-button';
 
 interface Props {
-  className?: string
+  className?: string;
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
@@ -22,7 +22,9 @@ export const Header: React.FC<Props> = ({ className }) => {
             </div>
             <div>
               <h1 className={'text-2xl uppercase font-black'}>Next Pizza</h1>
-              <p className={'text-sm text-gray-400 leading-3'}>вкусней уже некуда</p>
+              <p className={'text-sm text-gray-400 leading-3'}>
+                вкусней уже некуда
+              </p>
             </div>
           </div>
         </Link>
@@ -38,5 +40,5 @@ export const Header: React.FC<Props> = ({ className }) => {
         </div>
       </Container>
     </header>
-  )
-}
+  );
+};

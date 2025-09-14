@@ -1,19 +1,25 @@
-import React from 'react'
-import { cn } from '@/shared/lib/utils'
-import Link from 'next/link'
-import { Title } from '@/shared/components/shared'
-import { Button } from '@/shared/components/ui'
-import { Plus } from 'lucide-react'
+import React from 'react';
+import { cn } from '@/shared/lib/utils';
+import Link from 'next/link';
+import { Title } from '@/shared/components/shared';
+import { Button } from '@/shared/components/ui';
+import { Plus } from 'lucide-react';
 
 interface Props {
-  id: number
-  name: string
-  price: number
-  imgUrl: string
-  className?: string
+  id: number;
+  name: string;
+  price: number;
+  imgUrl: string;
+  className?: string;
 }
 
-export const ProductCard: React.FC<Props> = ({ className, name, imgUrl, price, id }) => {
+export const ProductCard: React.FC<Props> = ({
+  className,
+  name,
+  imgUrl,
+  price,
+  id,
+}) => {
   return (
     <div className={cn(className)}>
       <Link href={`/product/${id}`}>
@@ -36,5 +42,5 @@ export const ProductCard: React.FC<Props> = ({ className, name, imgUrl, price, i
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};

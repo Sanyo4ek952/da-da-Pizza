@@ -1,22 +1,25 @@
-'use client'
-import React, { ChangeEvent, useState } from 'react'
-import { FilterCheckbox, FilterCheckboxProps } from '@/shared/components/shared/filter-checkbox'
-import { Input, Skeleton } from '@/shared/components/ui'
+'use client';
+import React, { ChangeEvent, useState } from 'react';
+import {
+  FilterCheckbox,
+  FilterCheckboxProps,
+} from '@/shared/components/shared/filter-checkbox';
+import { Input, Skeleton } from '@/shared/components/ui';
 
-type Item = FilterCheckboxProps
+type Item = FilterCheckboxProps;
 
 interface Props {
-  className?: string
-  title?: string
-  items: Item[]
-  defaultItems?: Item[]
-  limit?: number
-  loading?: boolean
-  searchInputPlaceholder?: string
-  onClickCheckbox?: (id: string) => void
-  defaultValue?: string
-  selectedValues?: Set<string>
-  name?: string
+  className?: string;
+  title?: string;
+  items: Item[];
+  defaultItems?: Item[];
+  limit?: number;
+  loading?: boolean;
+  searchInputPlaceholder?: string;
+  onClickCheckbox?: (id: string) => void;
+  defaultValue?: string;
+  selectedValues?: Set<string>;
+  name?: string;
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({
@@ -31,12 +34,12 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   onClickCheckbox,
   selectedValues,
 }) => {
-  const [showAll, setShowAll] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
+  const [showAll, setShowAll] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const onChangeSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
-  }
+    setSearchValue(e.target.value);
+  };
   if (loading) {
     return (
       <div className={className}>
@@ -44,18 +47,22 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 
         {...Array(limit)
           .fill(0)
-          .map((_, index) => <Skeleton key={index} className={'h-6 mb-4 rounded-[8px]'} />)}
+          .map((_, index) => (
+            <Skeleton key={index} className={'h-6 mb-4 rounded-[8px]'} />
+          ))}
         <Skeleton className={'w-28 h-6 mb-4 rounded-[8px]'} />
       </div>
-    )
+    );
   }
   const list = showAll
-    ? items.filter(item => item.text.toLowerCase().includes(searchValue.toLocaleLowerCase()))
-    : (defaultItems || items).slice(0, limit)
+    ? items.filter((item) =>
+        item.text.toLowerCase().includes(searchValue.toLocaleLowerCase())
+      )
+    : (defaultItems || items).slice(0, limit);
 
   const toggleShowAll = () => {
-    setShowAll(prev => !prev)
-  }
+    setShowAll((prev) => !prev);
+  };
   return (
     <div className={className}>
       <p className="font-bold mb-3">{title}</p>
@@ -68,7 +75,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
           ></Input>
         </div>
       )}
-      <div className={'flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar'}>
+      <div
+        className={'flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar'}
+      >
         {list?.map((item, index) => (
           <FilterCheckbox
             endAdornment={item.endAdornment}
@@ -89,5 +98,5 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};

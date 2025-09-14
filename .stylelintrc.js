@@ -9,4 +9,4 @@ module.exports = {
     'jsx-a11y/alt-text': 'off',
   },
   ignoreFiles: ['node_modules/**', 'dist/**'],
-}
+};

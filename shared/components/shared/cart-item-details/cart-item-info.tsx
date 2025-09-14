@@ -1,8 +1,8 @@
-import { cn } from '@/shared/lib/utils'
+import { cn } from '@/shared/lib/utils';
 
 interface Props {
-  name: string
-  details: string
+  name: string;
+  details: string;
 }
 
 export const CartItemInfo: React.FC<Props> = ({ name, details }) => {
@@ -13,5 +13,5 @@ export const CartItemInfo: React.FC<Props> = ({ name, details }) => {
       </div>
       {details && <p className="text-xs text-gray-400 w-[90%]">{details}</p>}
     </div>
-  )
-}
+  );
+};

@@ -1,15 +1,18 @@
-import { pizzaSizes, PizzaType } from '@/shared/constants/pizza'
-import { ProductItem } from '@prisma/client'
-import { Variant } from '@/shared/components/shared/group-variants'
+import { pizzaSizes, PizzaType } from '@/shared/constants/pizza';
+import { ProductItem } from '@prisma/client';
+import { Variant } from '@/shared/components/shared/group-variants';
 
-export const getAvailablePizzaSizes = (type: PizzaType, items: ProductItem[]): Variant[] => {
-  const filteredPizzasByType = items.filter(item => item.pizzaType === type)
+export const getAvailablePizzaSizes = (
+  type: PizzaType,
+  items: ProductItem[]
+): Variant[] => {
+  const filteredPizzasByType = items.filter((item) => item.pizzaType === type);
 
-  return pizzaSizes.map(item => ({
+  return pizzaSizes.map((item) => ({
     name: item.name,
     value: item.value,
     disabled: !filteredPizzasByType.some(
-      pizzaSize => Number(pizzaSize.size) === Number(item.value)
+      (pizzaSize) => Number(pizzaSize.size) === Number(item.value)
     ),
-  }))
-}
+  }));
+};

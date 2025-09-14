@@ -1,21 +1,26 @@
-'use client'
-import React from 'react'
-import { cn } from '@/shared/lib/utils'
+'use client';
+import React from 'react';
+import { cn } from '@/shared/lib/utils';
 
 export interface Variant {
-  name: string
-  value: string
-  disabled?: boolean
+  name: string;
+  value: string;
+  disabled?: boolean;
 }
 
 interface Props {
-  className?: string
-  items: readonly Variant[]
-  value?: Variant['value']
-  onClick?: (value: Variant['value']) => void
+  className?: string;
+  items: readonly Variant[];
+  value?: Variant['value'];
+  onClick?: (value: Variant['value']) => void;
 }
 
-export const GroupVariants: React.FC<Props> = ({ className, onClick, value, items }) => {
+export const GroupVariants: React.FC<Props> = ({
+  className,
+  onClick,
+  value,
+  items,
+}) => {
   return (
     <div
       className={cn(
@@ -23,7 +28,7 @@ export const GroupVariants: React.FC<Props> = ({ className, onClick, value, item
         'flex items-center justify-between bg-[#F3F3F7] rounded-3xl p-1 select-none'
       )}
     >
-      {items.map(item => (
+      {items.map((item) => (
         <button
           key={item.name}
           onClick={() => onClick?.(item.value)}
@@ -39,5 +44,5 @@ export const GroupVariants: React.FC<Props> = ({ className, onClick, value, item
         </button>
       ))}
     </div>
-  )
-}
+  );
+};

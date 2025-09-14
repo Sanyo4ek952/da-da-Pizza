@@ -1,9 +1,9 @@
-import React from 'react'
-import { cn } from '@/shared/lib/utils'
-import { AArrowDown } from 'lucide-react'
+import React from 'react';
+import { cn } from '@/shared/lib/utils';
+import { AArrowDown } from 'lucide-react';
 
 interface Props {
-  className?: string
+  className?: string;
 }
 
 export const SortPopup: React.FC<Props> = ({ className }) => {
@@ -18,5 +18,5 @@ export const SortPopup: React.FC<Props> = ({ className }) => {
       <b>Сортировка:</b>
       <b className={'text-primary'}>популярное</b>
     </div>
-  )
-}
+  );
+};
