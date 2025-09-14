@@ -20,7 +20,7 @@ export const ChoosePizzaForm: FC<Props> = ({
   name,
   ingredients,
   imageUrl,
-  onClickAddCart,
+
   onSubmit,
   items,
   className,
