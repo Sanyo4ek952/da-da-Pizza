@@ -1,7 +1,9 @@
-import * as products from './products'
-import * as ingredients from './getAll'
+import * as products from './products';
+import * as ingredients from './getAll';
+import * as cart from './cart';
 
 export const Api = {
   products,
   ingredients,
-}
+  cart,
+};

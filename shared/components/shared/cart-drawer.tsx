@@ -8,9 +8,21 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, } from '@/shared/components/ui/sheet';
 import { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
+import { useCart } from '@/shared/hooks/useCart';
+import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
 import { getCartItemDetails } from '@/shared/lib';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+  const onClickCountButton = (
+    id: number,
+    quantity: number,
+    type: 'plus' | 'minus'
+  ) => {
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
+    console.log(id, quantity, type);
+  };
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -23,71 +35,29 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
             </SheetTitle>
           </SheetHeader>
           <div className={' mt-5 gap-2 overflow-auto  flex-1'}>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'http://localhost:3000/product/18'}
-                details={getCartItemDetails(2, 30, [
-                  { name: 'Цыпленок' },
-                  { name: 'Сыр' },
-                ])}
-                name={'выаыва'}
-                price={41}
-                quantity={30}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'http://localhost:3000/product/18'}
-                details={getCartItemDetails(2, 30, [
-                  { name: 'Цыпленок' },
-                  { name: 'Сыр' },
-                ])}
-                name={'выаыва'}
-                price={41}
-                quantity={30}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'http://localhost:3000/product/18'}
-                details={getCartItemDetails(2, 30, [
-                  { name: 'Цыпленок' },
-                  { name: 'Сыр' },
-                ])}
-                name={'выаыва'}
-                price={41}
-                quantity={30}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'http://localhost:3000/product/18'}
-                details={getCartItemDetails(2, 30, [
-                  { name: 'Цыпленок' },
-                  { name: 'Сыр' },
-                ])}
-                name={'выаыва'}
-                price={41}
-                quantity={30}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'http://localhost:3000/product/18'}
-                details={getCartItemDetails(2, 30, [
-                  { name: 'Цыпленок' },
-                  { name: 'Сыр' },
-                ])}
-                name={'выаыва'}
-                price={41}
-                quantity={30}
-              />
-            </div>
+            {items.map((item) => (
+              <div className={'mb-2'} key={item.id}>
+                <CartDrawerItem
+                  onClickCountButton={(type) =>
+                    onClickCountButton(item.id, item.quantity, type)
+                  }
+                  id={item.id}
+                  imageUrl={item.imageUrl}
+                  details={
+                    item.pizzaSize && pizzaTypes
+                      ? getCartItemDetails(
+                          item.ingredients,
+                          item.pizzaType as PizzaType,
+                          item.pizzaSize as PizzaSize
+                        )
+                      : ''
+                  }
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              </div>
+            ))}
           </div>
           <SheetFooter className=" bg-white p-8">
             <div className="w-full">
@@ -97,7 +67,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                   <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
                 </span>
 
-                <span className="font-bold text-lg">500 ₽</span>
+                <span className="font-bold text-lg">{totalAmount} ₽</span>
               </div>
 
               <Link href="/checkout">
