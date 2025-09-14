@@ -34,4 +34,3 @@ export const IngredientItem: FC<Props> = ({
     </div>
   )
 }
-//TODO 9:23
