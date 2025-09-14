@@ -64,8 +64,8 @@ export const useCartStore = create<CartState>((set, get) => ({
           item.id === id ? { ...item, disabled: true } : item
         ),
       }));
-      // const data = await Api.cart.removeCartItem(id);
-      // set(getCartDetails(data));
+      const data = await Api.cart.removeCartItem(id);
+      set(getCartDetails(data));
     } catch (error) {
       console.error(error);
       set({ error: true });

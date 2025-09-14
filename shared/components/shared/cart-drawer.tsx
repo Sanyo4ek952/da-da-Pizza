@@ -31,7 +31,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
         <div className={cn('flex flex-col h-full')}>
           <SheetHeader>
             <SheetTitle>
-              В корзине <span className="font-bold">3 товара</span>
+              В корзине <span className="font-bold">{totalAmount} товара</span>
             </SheetTitle>
           </SheetHeader>
           <div className={' mt-5 gap-2 overflow-auto  flex-1'}>
@@ -41,6 +41,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                   onClickCountButton={(type) =>
                     onClickCountButton(item.id, item.quantity, type)
                   }
+                  onClickRemove={() => removeCartItem(item.id)}
                   id={item.id}
                   imageUrl={item.imageUrl}
                   details={
