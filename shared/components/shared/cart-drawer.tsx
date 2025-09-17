@@ -11,9 +11,11 @@ import { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
 import { useCart } from '@/shared/hooks/useCart';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
 import { getCartItemDetails } from '@/shared/lib';
+import { useCartStore } from '@/shared/store';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+  const loading = useCartStore((state) => state.loading);
   const onClickCountButton = (
     id: number,
     quantity: number,
@@ -72,7 +74,11 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
               </div>
 
               <Link href="/checkout">
-                <Button type="submit" className="w-full h-12 text-base">
+                <Button
+                  loading={loading}
+                  type="submit"
+                  className="w-full h-12 text-base"
+                >
                   Оформить заказ
                   <ArrowRight className="w-5 ml-2" />
                 </Button>
