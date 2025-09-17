@@ -4,10 +4,10 @@ import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount';
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
     const data = (await req.json()) as { quantity: number };
     const token = req.cookies.get('cartToken')?.value;
     if (!token) {
@@ -15,7 +15,7 @@ export async function PATCH(
     }
     const cartItem = await prisma.cartItem.findFirst({
       where: {
-        id: id,
+        id: Number(id),
       },
     });
     if (!cartItem) {
@@ -23,7 +23,7 @@ export async function PATCH(
     }
 
     await prisma.cartItem.update({
-      where: { id },
+      where: { id: Number(id) },
       data: { quantity: data.quantity },
     });
     const updatedUserCart = await updateCartTotalAmount(token);
@@ -36,10 +36,10 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
     const token = req.cookies.get('cartToken')?.value;
 
     if (!token) {
@@ -47,14 +47,14 @@ export async function DELETE(
     }
     const cartItem = await prisma.cartItem.findFirst({
       where: {
-        id: id,
+        id: Number(id),
       },
     });
     if (!cartItem) {
       return NextResponse.json({ error: 'Cart token not found' });
     }
     await prisma.cartItem.delete({
-      where: { id },
+      where: { id: Number(id) },
     });
     const updatedUserCart = await updateCartTotalAmount(token);
     return NextResponse.json(updatedUserCart);
