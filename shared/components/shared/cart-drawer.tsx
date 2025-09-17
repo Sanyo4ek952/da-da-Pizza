@@ -6,14 +6,7 @@ import Link from 'next/link';
 import { Button } from '../ui';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/shared/components/ui/sheet';
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, } from '@/shared/components/ui/sheet';
 import { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
 import { useCart } from '@/shared/hooks/useCart';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
@@ -38,7 +31,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
         <div className={cn('flex flex-col h-full')}>
           <SheetHeader>
             <SheetTitle>
-              В корзине <span className="font-bold">{totalAmount} товара</span>
+              В корзине <span className="font-bold">{items.length} товара</span>
             </SheetTitle>
           </SheetHeader>
           <div className={' mt-5 gap-2 overflow-auto  flex-1'}>

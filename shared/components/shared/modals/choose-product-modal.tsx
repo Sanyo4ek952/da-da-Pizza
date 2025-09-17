@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { ProductWithRelations } from '@/@types/prisma';
 import { ChoosePizzaForm, ChooseProductForm } from '@/shared/components/shared';
@@ -11,6 +11,7 @@ import {
 } from '@/shared/components/ui/dialog';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/shared/store';
+import toast from 'react-hot-toast';
 
 interface Props {
   className?: string;
@@ -20,13 +21,24 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
   const router = useRouter();
   const firstItem = product.items[0];
   const isPizzaForm = Boolean(firstItem.pizzaType);
-  const addCartItem = useCartStore((state) => state.addCartItem);
 
+  const addCartItem = useCartStore((state) => state.addCartItem);
+  const loading = useCartStore((state) => state.loading);
+
+  const [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    if (!open) {
+      router.back();
+    }
+  }, [open, router]);
   const onAddProduct = () => {
     addCartItem({
       productItemId: firstItem.id,
       ingredients: [],
     });
+    toast.success('Товар добавлен в корзину');
+    setOpen(false);
   };
   const onAddPizza = async (productItemId: number, ingredients: number[]) => {
     try {
@@ -34,13 +46,16 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
         productItemId,
         ingredients,
       });
+      toast.success('Товар добавлен в корзину');
+      setOpen(false);
     } catch (error) {
+      toast.error('Не удалось добавить пиццу в корзину');
       console.log(error);
     }
   };
 
   return (
-    <Dialog onOpenChange={() => router.back()} open={Boolean(product)}>
+    <Dialog onOpenChange={setOpen} open={open}>
       <DialogDescription>
         Здесь вы можете выбрать размер и ингредиенты для вашей пиццы.
       </DialogDescription>
@@ -58,6 +73,7 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
             name={product.name}
             items={product.items}
             onSubmit={onAddPizza}
+            loading={loading}
           />
         ) : (
           <ChooseProductForm
@@ -67,6 +83,7 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
             imageUrl={product.imageUrl}
             name={product.name}
             ingredients={[]}
+            loading={loading}
           />
         )}
       </DialogContent>

@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 import { useSet } from 'react-use';

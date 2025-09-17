@@ -10,15 +10,13 @@ interface Props {
   ingredients: Ingredient[];
   items: ProductItem[];
   loading?: boolean;
-  onSubmit: (itemId: number, ingredients: number[]) => void;
+  onSubmit: () => void;
   className?: string;
   price: number;
 }
 export const ChooseProductForm: FC<Props> = ({
   name,
-  items,
   imageUrl,
-  ingredients,
   price,
   loading,
   onSubmit,
@@ -44,7 +42,8 @@ export const ChooseProductForm: FC<Props> = ({
       <div className="w-[490px] bg-[#f7f6f5] p-7">
         <Title text={name} size={'md'} className={'font-extrabold mb-1'} />
         <Button
-          // onClick={() => onSubmit()}
+          loading={loading}
+          onClick={onSubmit}
           className="h-[55px] px-10  text-base rounded-[18px] w-full mt-10"
         >
           Добавить в корзину за {price} ₽

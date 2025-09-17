@@ -20,12 +20,14 @@ interface Props {
   items: ProductItem[];
   onClickAddCart?: VoidFunction;
   onSubmit: (itemId: number, ingredients: number[]) => void;
+  loading?: boolean;
 }
 export const ChoosePizzaForm: FC<Props> = ({
   name,
   ingredients,
   imageUrl,
   onSubmit,
+  loading,
   items,
   className,
 }) => {
@@ -88,6 +90,7 @@ export const ChoosePizzaForm: FC<Props> = ({
           </div>
         </div>
         <Button
+          loading={loading}
           onClick={handleClick}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >

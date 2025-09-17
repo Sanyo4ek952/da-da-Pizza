@@ -19,12 +19,13 @@ export default function RootLayout({
       <head>
         <link data-rh="true" rel={'icon'} href={'/logo.png'} />
       </head>
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <body className={`${nunito.variable} antialiased`}>
+
+      <body className={`${nunito.variable} antialiased`}>
+        <Suspense fallback={<div>Загрузка...</div>}>
           {children}
           <Toaster />
-        </body>
-      </Suspense>
+        </Suspense>
+      </body>
     </html>
   );
 }
