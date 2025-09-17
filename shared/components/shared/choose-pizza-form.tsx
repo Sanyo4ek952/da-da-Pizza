@@ -25,7 +25,6 @@ export const ChoosePizzaForm: FC<Props> = ({
   name,
   ingredients,
   imageUrl,
-
   onSubmit,
   items,
   className,

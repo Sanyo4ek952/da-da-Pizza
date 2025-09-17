@@ -1,5 +1,6 @@
 import { Nunito } from 'next/font/google';
 import './globals.css';
+import { Suspense } from 'react';
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -17,7 +18,9 @@ export default function RootLayout({
       <head>
         <link data-rh="true" rel={'icon'} href={'/logo.png'} />
       </head>
-      <body className={`${nunito.variable} antialiased`}>{children}</body>
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <body className={`${nunito.variable} antialiased`}>{children}</body>
+      </Suspense>
     </html>
   );
 }
