@@ -28,11 +28,15 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
       ingredients: [],
     });
   };
-  const onAddPizza = (productItemId: number, ingredients: number[]) => {
-    addCartItem({
-      productItemId,
-      ingredients,
-    });
+  const onAddPizza = async (productItemId: number, ingredients: number[]) => {
+    try {
+      await addCartItem({
+        productItemId,
+        ingredients,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
