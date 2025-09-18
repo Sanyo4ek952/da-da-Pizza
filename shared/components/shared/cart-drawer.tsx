@@ -6,14 +6,7 @@ import Link from 'next/link';
 import { Button } from '../ui';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/shared/components/ui/sheet';
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, } from '@/shared/components/ui/sheet';
 import { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
 import { useCart } from '@/shared/hooks/useCart';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
@@ -62,6 +55,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                         )
                       : ''
                   }
+                  disabled={item.disabled}
                   name={item.name}
                   price={item.price}
                   quantity={item.quantity}

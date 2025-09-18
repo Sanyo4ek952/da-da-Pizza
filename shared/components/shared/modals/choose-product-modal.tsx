@@ -3,7 +3,12 @@ import { FC, useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { ProductWithRelations } from '@/@types/prisma';
 import { ProductForm } from '@/shared/components/shared';
-import { Dialog, DialogContent, DialogDescription, DialogTitle, } from '@/shared/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@/shared/components/ui/dialog';
 import { useRouter } from 'next/navigation';
 
 interface Props {
