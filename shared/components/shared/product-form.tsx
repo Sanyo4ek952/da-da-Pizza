@@ -17,7 +17,7 @@ export const ProductForm: FC<Props> = ({ product, onSubmit: _onSubmit }) => {
   const addCartItem = useCartStore((state) => state.addCartItem);
   const loading = useCartStore((state) => state.loading);
 
-  const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
+  const onSubmit = async (productItemId: number, ingredients?: number[]) => {
     try {
       const ItemId = productItemId ?? firstItem.id;
 
@@ -49,6 +49,7 @@ export const ProductForm: FC<Props> = ({ product, onSubmit: _onSubmit }) => {
       onSubmit={onSubmit}
       price={firstItem.price}
       items={product.items}
+      id={firstItem.id}
       imageUrl={product.imageUrl}
       name={product.name}
       ingredients={[]}
