@@ -1,8 +1,32 @@
-import { CheckoutItemDetails, Container, Title, WhiteBlock, } from '@/shared/components/shared';
+'use client';
+
+import {
+  CheckoutItem,
+  CheckoutItemDetails,
+  Container,
+  Title,
+  WhiteBlock,
+} from '@/shared/components/shared';
 import { Button, Input, Textarea } from '@/shared/components/ui';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
+import { useCart } from '@/shared/hooks';
+import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
+import { getCartItemDetails } from '@/shared/lib';
+import React from 'react';
+import { removeCartItem } from '@/shared/services/cart';
 
 export default function CheckoutPage() {
+  const { totalAmount, updateItemQuantity, items } = useCart();
+
+  const onClickCountButton = (
+    id: number,
+    quantity: number,
+    type: 'plus' | 'minus'
+  ) => {
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
+  };
+
   return (
     <Container className={'mt-10'}>
       <Title
@@ -12,7 +36,31 @@ export default function CheckoutPage() {
       />
       <div className={'flex gap-10'}>
         <div className={'flex flex-col gap-10 flex-1 mb-20 '}>
-          <WhiteBlock title={'1. Корзина'}>123131232</WhiteBlock>
+          <WhiteBlock title={'1. Корзина'}>
+            <div className="flex flex-col gap-5">
+              {items.map((item) => (
+                <div className={'mb-2'} key={item.id}>
+                  <CheckoutItem
+                    onClickCountButton={(type) =>
+                      onClickCountButton(item.id, item.quantity, type)
+                    }
+                    onClickRemove={() => removeCartItem(item.id)}
+                    id={item.id}
+                    imageUrl={item.imageUrl}
+                    details={getCartItemDetails(
+                      item.ingredients,
+                      item.pizzaType as PizzaType,
+                      item.pizzaSize as PizzaSize
+                    )}
+                    disabled={item.disabled}
+                    name={item.name}
+                    price={item.price}
+                    quantity={item.quantity}
+                  />
+                </div>
+              ))}
+            </div>
+          </WhiteBlock>
           <WhiteBlock title={'2. Персональные данные'}>
             <div className={'grid grid-cols-2 gap-5'}>
               <Input
@@ -56,7 +104,9 @@ export default function CheckoutPage() {
           <WhiteBlock className={'p-6 sticky top-4'}>
             <div className="flex flex-col gap-1">
               <span className="text-xl">Итого:</span>
-              <span className="text-[34px] font-extrabold">3506 Р</span>
+              <span className="text-[34px] font-extrabold">
+                {totalAmount} Р
+              </span>
             </div>
             <CheckoutItemDetails
               title={

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCartStore } from '../store';
 import { CartStateItems } from '@/shared/lib/get-cart-details';
+import { CreateCartItemValues } from '@/shared/services/dto/cartDTO';
 
 type ReturnProps = {
   totalAmount: number;
@@ -8,7 +9,7 @@ type ReturnProps = {
   loading: boolean;
   updateItemQuantity: (id: number, quantity: number) => void;
   removeCartItem: (id: number) => void;
-  addCartItem: (values: any) => void;
+  addCartItem: (values: CreateCartItemValues) => void;
 };
 
 export const useCart = (): ReturnProps => {

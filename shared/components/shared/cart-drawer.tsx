@@ -16,15 +16,15 @@ import {
   SheetTrigger,
 } from '@/shared/components/ui/sheet';
 import { CartDrawerItem } from '@/shared/components/shared/cart-drawer-item';
-import { useCart } from '@/shared/hooks/useCart';
-import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
+import { useCart } from '@/shared/hooks/use-cart';
+import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 import { getCartItemDetails } from '@/shared/lib';
-import { useCartStore } from '@/shared/store';
 import { Title } from '@/shared/components/shared/title';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
-  const loading = useCartStore((state) => state.loading);
+  const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
+    useCart();
+
   const onClickCountButton = (
     id: number,
     quantity: number,
@@ -32,7 +32,6 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   ) => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
     updateItemQuantity(id, newQuantity);
-    console.log(id, quantity, type);
   };
   return (
     <Sheet>
@@ -96,15 +95,11 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                       onClickRemove={() => removeCartItem(item.id)}
                       id={item.id}
                       imageUrl={item.imageUrl}
-                      details={
-                        item.pizzaSize && pizzaTypes
-                          ? getCartItemDetails(
-                              item.ingredients,
-                              item.pizzaType as PizzaType,
-                              item.pizzaSize as PizzaSize
-                            )
-                          : ''
-                      }
+                      details={getCartItemDetails(
+                        item.ingredients,
+                        item.pizzaType as PizzaType,
+                        item.pizzaSize as PizzaSize
+                      )}
                       disabled={item.disabled}
                       name={item.name}
                       price={item.price}
