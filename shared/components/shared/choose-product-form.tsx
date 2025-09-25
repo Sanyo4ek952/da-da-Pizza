@@ -7,10 +7,11 @@ import { Button } from '@/shared/components/ui';
 interface Props {
   imageUrl: string;
   name: string;
+  id: number;
   ingredients: Ingredient[];
   items: ProductItem[];
   loading?: boolean;
-  onSubmit: () => void;
+  onSubmit: (itemId: number) => void;
   className?: string;
   price: number;
 }
@@ -20,6 +21,7 @@ export const ChooseProductForm: FC<Props> = ({
   price,
   loading,
   onSubmit,
+  id,
   className,
 }) => {
   return (
@@ -43,7 +45,7 @@ export const ChooseProductForm: FC<Props> = ({
         <Title text={name} size={'md'} className={'font-extrabold mb-1'} />
         <Button
           loading={loading}
-          onClick={onSubmit}
+          onClick={() => onSubmit(id)}
           className="h-[55px] px-10  text-base rounded-[18px] w-full mt-10"
         >
           Добавить в корзину за {price} ₽
