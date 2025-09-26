@@ -12,6 +12,7 @@ import { useCart } from '@/shared/hooks';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 import { getCartItemDetails } from '@/shared/lib';
 import React from 'react';
+import { FormInput } from '@/shared/components/form-components';
 
 export default function CheckoutPage() {
   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
@@ -76,7 +77,7 @@ export default function CheckoutPage() {
                 className={'text-base'}
                 placeholder={'E-mail'}
               />
-              <Input
+              <FormInput
                 name="phone"
                 className={'text-base'}
                 placeholder={'Телефон'}
