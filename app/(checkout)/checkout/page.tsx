@@ -14,7 +14,8 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 
 export default function CheckoutPage() {
-  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+  const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
+    useCart();
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
@@ -51,15 +52,20 @@ export default function CheckoutPage() {
           <div className={'flex gap-10'}>
             <div className={'flex flex-col gap-10 flex-1 mb-20 '}>
               <CheckoutCart
+                loading={loading}
                 items={items}
                 onClickCountButton={onClickCountButton}
                 removeCartItem={removeCartItem}
               />
-              <CheckoutPersonalForm />
-              <CheckoutAddressForm />
+              <CheckoutPersonalForm
+                className={loading ? 'opacity-40 pointer-events-none' : ''}
+              />
+              <CheckoutAddressForm
+                className={loading ? 'opacity-40 pointer-events-none' : ''}
+              />
             </div>
             <div className={'w-[450px]'}>
-              <CheckoutSidebar totalAmount={totalAmount} />
+              <CheckoutSidebar totalAmount={totalAmount} loading={loading} />
             </div>
           </div>
         </form>

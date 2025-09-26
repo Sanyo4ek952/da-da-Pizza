@@ -4,7 +4,7 @@ import { cn } from '@/shared/lib/utils';
 interface Props {
   className?: string;
   title?: ReactNode;
-  value?: number;
+  value?: ReactNode;
 }
 export const CheckoutItemDetails: FC<Props> = ({ className, title, value }) => {
   return (
@@ -13,7 +13,7 @@ export const CheckoutItemDetails: FC<Props> = ({ className, title, value }) => {
         {title}
         <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2"></div>
       </span>
-      <span className={'font-bold text-lg'}>{value} Р</span>
+      <span className={'font-bold text-lg'}>{value} </span>
     </div>
   );
 };
