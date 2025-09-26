@@ -29,29 +29,31 @@ export const CheckoutCart: FC<Props> = ({
   return (
     <WhiteBlock title={'1. Корзина'} className={className}>
       <div className="flex flex-col gap-5">
-        {loading &&
-          [...Array(4)].map((_, index) => <CheckoutItemSkeleton key={index} />)}
-        {items.map((item) => (
-          <div className={'mb-2'} key={item.id}>
-            <CheckoutItem
-              onClickCountButton={(type) =>
-                onClickCountButton(item.id, item.quantity, type)
-              }
-              onClickRemove={() => removeCartItem(item.id)}
-              id={item.id}
-              imageUrl={item.imageUrl}
-              details={getCartItemDetails(
-                item.ingredients,
-                item.pizzaType as PizzaType,
-                item.pizzaSize as PizzaSize
-              )}
-              disabled={item.disabled}
-              name={item.name}
-              price={item.price}
-              quantity={item.quantity}
-            />
-          </div>
-        ))}
+        {loading
+          ? [...Array(4)].map((_, index) => (
+              <CheckoutItemSkeleton key={index} />
+            ))
+          : items.map((item) => (
+              <div className={'mb-2'} key={item.id}>
+                <CheckoutItem
+                  onClickCountButton={(type) =>
+                    onClickCountButton(item.id, item.quantity, type)
+                  }
+                  onClickRemove={() => removeCartItem(item.id)}
+                  id={item.id}
+                  imageUrl={item.imageUrl}
+                  details={getCartItemDetails(
+                    item.ingredients,
+                    item.pizzaType as PizzaType,
+                    item.pizzaSize as PizzaSize
+                  )}
+                  disabled={item.disabled}
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              </div>
+            ))}
       </div>
     </WhiteBlock>
   );
