@@ -3,6 +3,8 @@ import { CheckoutFormValues } from '@/shared/constants';
 import { cookies } from 'next/headers';
 import { prisma } from '@/prisma/prisma-client';
 import { OrderStatus } from '@prisma/client';
+import { sendEmail } from '@/shared/lib';
+import { PayOrderTemplate } from '@/shared/components';
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
@@ -32,15 +34,6 @@ export async function createOrder(data: CheckoutFormValues) {
     if (!useCart) {
       throw new Error('Cart not found');
     }
-    // await prisma.order.create({
-    //   data: {
-    //     user: {
-    //       connect: {
-    //         id: useCart.userId,
-    //       },
-    //     },
-    //   },
-    // });
     if (useCart?.totalAmount === 0) {
       throw new Error('Cart is empty');
     }
@@ -71,6 +64,17 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     });
     //TODO Сделать создание ссылки оплаты
-    return 'https://redux.js.org/tutorials/essentials/part-2-app-structure';
-  } catch (error) {}
+    await sendEmail(
+      data.email,
+      'next Pizza / Оплатите заказ #' + order.id,
+      PayOrderTemplate({
+        orderId: order.id,
+        totalAmount: order.totalAmount,
+        paymentUrl: 'https://redux.js.org/tutorials/',
+      })
+    );
+    return 'https://redux.js.org/tutorials/';
+  } catch (error) {
+    console.log('[CreateOrder] Server error', error);
+  }
 }
