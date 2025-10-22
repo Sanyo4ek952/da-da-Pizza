@@ -9,7 +9,6 @@ import { OrderSuccessTemplate } from '@/shared/components/shared/email-tamplates
 export async function POST(req: NextRequest) {
   try {
     const body = (await req.json()) as PaymentCallbackData;
-    console.log('[CALLBACK BODY]', JSON.stringify(body, null, 2));
     const order = await prisma.order.findFirst({
       where: {
         id: Number(body.object.metadata.order_id),
@@ -31,6 +30,7 @@ export async function POST(req: NextRequest) {
     const items = JSON.parse(order.items as string) as CartItemDTO[];
 
     if (isSucceeded) {
+      //TODO Не приходит письмо
       await sendEmail(
         order.email as string,
         'Da da Pizza / Ваш заказ оформлен',
