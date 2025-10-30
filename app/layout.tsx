@@ -2,6 +2,7 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import { Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { Providers } from '@/shared/components/shared';
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -22,7 +23,7 @@ export default function RootLayout({
 
       <body className={`${nunito.variable} antialiased`}>
         <Suspense fallback={<div>Загрузка...</div>}>
-          {children}
+          <Providers>{children}</Providers>
           <Toaster />
         </Suspense>
       </body>
