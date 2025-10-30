@@ -1,8 +1,9 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
 import {
+  AuthModal,
   CartButton,
   Container,
   ProfileButton,
@@ -24,7 +25,7 @@ export const Header: React.FC<Props> = ({
   hasCart = true,
 }) => {
   const searchParams = useSearchParams();
-
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   useEffect(() => {
     if (searchParams.has('paid')) {
       setTimeout(() => {
@@ -55,7 +56,11 @@ export const Header: React.FC<Props> = ({
           </div>
         )}
         <div className="flex items-center gap-3">
-          <ProfileButton />
+          <AuthModal
+            open={openAuthModal}
+            onClose={() => setOpenAuthModal(false)}
+          />
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
 
           {hasCart && <CartButton />}
         </div>

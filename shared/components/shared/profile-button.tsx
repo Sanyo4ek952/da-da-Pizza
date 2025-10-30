@@ -10,12 +10,16 @@ interface Props {
   onClickSignIn?: () => void;
   className?: string;
 }
-export const ProfileButton: FC<Props> = ({ className }) => {
+export const ProfileButton: FC<Props> = ({ className, onClickSignIn }) => {
   const { data: session } = useSession();
   return (
     <div className={className}>
       {!session ? (
-        <Button variant="outline" className={cn('flex items-center gap-1')}>
+        <Button
+          onClick={onClickSignIn}
+          variant="outline"
+          className={cn('flex items-center gap-1')}
+        >
           <User size={16} />
           Войти
         </Button>
