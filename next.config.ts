@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    domains: ['cdn.inappstory.ru'],
     remotePatterns: [
       {
         protocol: 'https',
