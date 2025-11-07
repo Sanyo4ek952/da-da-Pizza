@@ -4,12 +4,10 @@ import { cookies } from 'next/headers';
 import { prisma } from '@/prisma/prisma-client';
 import { OrderStatus, Prisma } from '@prisma/client';
 import { createPayment, sendEmail } from '@/shared/lib';
-import {
-  PayOrderTemplate,
-  VerificationUserTemplate,
-} from '@/shared/components';
+import { PayOrderTemplate } from '@/shared/components';
 import { getUserSession } from '@/shared/lib/get-user-session';
 import { hashSync } from 'bcrypt';
+import { VerificationUserTemplate } from '@/shared/components/shared/email-tamplates/verification-user';
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
