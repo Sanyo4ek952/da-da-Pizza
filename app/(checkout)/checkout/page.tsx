@@ -14,12 +14,15 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 import toast from 'react-hot-toast';
 import { createOrder } from '@/app/actions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { Api } from '@/shared/services/api-client';
 
 export default function CheckoutPage() {
   const [submitting, setSubmitting] = useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart();
+  const { data: session } = useSession();
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
@@ -32,7 +35,18 @@ export default function CheckoutPage() {
       comment: '',
     },
   });
-
+  useEffect(() => {
+    async function fetchUserInfo() {
+      const data = await Api.auth.getMe();
+      const [firstName, lastName] = data.fullName.split(' ');
+      form.setValue('firstName', firstName);
+      form.setValue('lastName', lastName);
+      form.setValue('email', data.email);
+    }
+    if (session) {
+      fetchUserInfo();
+    }
+  }, [session]);
   const onClickCountButton = (
     id: number,
     quantity: number,
