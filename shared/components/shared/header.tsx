@@ -10,8 +10,7 @@ import {
   SearchInput,
 } from '@/shared/components/shared';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { router } from 'next/client';
+import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 interface Props {
@@ -27,6 +26,7 @@ export const Header: React.FC<Props> = ({
 }) => {
   const searchParams = useSearchParams();
   const [openAuthModal, setOpenAuthModal] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     let toastMessage = '';
     if (searchParams.has('paid')) {
