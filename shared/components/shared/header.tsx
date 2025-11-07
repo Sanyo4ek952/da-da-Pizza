@@ -11,6 +11,7 @@ import {
 } from '@/shared/components/shared';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { router } from 'next/client';
 import toast from 'react-hot-toast';
 
 interface Props {
@@ -27,10 +28,20 @@ export const Header: React.FC<Props> = ({
   const searchParams = useSearchParams();
   const [openAuthModal, setOpenAuthModal] = useState(false);
   useEffect(() => {
+    let toastMessage = '';
     if (searchParams.has('paid')) {
+      toastMessage = 'Заказ оплачен';
+    }
+    if (searchParams.has('verified')) {
+      toastMessage = 'Почта успешно подтверджена!';
+    }
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success('Заказ оплачен');
-      }, 500);
+        router.replace('/');
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
+      }, 1000);
     }
   }, []);
 
