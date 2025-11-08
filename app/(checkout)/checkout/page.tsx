@@ -4,11 +4,10 @@ import {
   CheckoutAddressForm,
   CheckoutCart,
   CheckoutPersonalForm,
-  CheckoutSidebar,
-  Container,
-  Title,
-} from '@/shared/components/shared';
-import { useCart } from '@/shared/hooks';
+} from '@/features/checkout';
+import { CheckoutSidebar } from '@/widgets/checkout';
+import { Container, Title } from '@/shared/components';
+import { useCart } from '@/features/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
@@ -46,7 +45,7 @@ export default function CheckoutPage() {
     if (session) {
       fetchUserInfo();
     }
-  }, [session]);
+  }, [session, form]);
   const onClickCountButton = (
     id: number,
     quantity: number,

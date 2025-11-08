@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
-import { Container, Header } from '@/shared/components/shared';
+import { Container } from '@/shared/components';
+import { Header } from '@/widgets/header';
 
 export const metadata: Metadata = {
   title: 'Da Da Pizza | Корзина',
