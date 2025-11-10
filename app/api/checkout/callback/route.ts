@@ -4,7 +4,7 @@ import { PaymentCallbackData } from '@/@types/yookassa';
 import { OrderStatus } from '@prisma/client';
 import { CartItemDTO } from '@/shared/services/dto/cartDTO';
 import { sendEmail } from '@/shared/lib';
-import { OrderSuccessTemplate } from '@/shared/components/shared/email-tamplates/order-success';
+import { OrderSuccessTemplate } from '@/entities/order';
 
 export async function POST(req: NextRequest) {
   try {

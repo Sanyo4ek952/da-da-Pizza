@@ -1,19 +1,16 @@
-import {
-  Container,
-  Filters,
-  ProductGroupList,
-  Stories,
-  Title,
-  TopBar,
-} from '@/shared/components/shared';
+import { Container, Title } from '@/shared/components';
+import { Filters } from '@/features/filters';
+import { ProductGroupList } from '@/widgets/product';
+import { Stories } from '@/widgets/stories';
+import { TopBar } from '@/widgets/top-bar';
 import { findPizzas, GetSearchParams } from '@/shared/lib/find-pizzas';
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<GetSearchParams>;
+  searchParams: GetSearchParams;
 }) {
-  const categories = await findPizzas(await searchParams);
+  const categories = await findPizzas(searchParams);
   return (
     <>
       <Container className={'mt-10'}>

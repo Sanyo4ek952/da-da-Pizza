@@ -1,13 +1,14 @@
 import { prisma } from '@/prisma/prisma-client';
 import { notFound } from 'next/navigation';
-import { Container, ProductForm } from '@/shared/components/shared';
+import { Container } from '@/shared/components';
+import { ProductForm } from '@/features/product';
 
 export default async function ProductPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
+  const { id } = params;
 
   const product = await prisma.product.findFirst({
     where: { id: Number(id) },
