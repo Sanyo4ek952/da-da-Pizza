@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/prisma/prisma-client';
-import { PaymentCallbackData } from '@/@types/yookassa';
 import { OrderStatus } from '@prisma/client';
-import { CartItemDTO } from '@/shared/services/dto/cartDTO';
-import { sendEmail } from '@/shared/lib';
-import { OrderSuccessTemplate } from '@/shared/components/shared/email-tamplates/order-success';
+import { CartItemDTO } from '@shared/api/dto/cart';
+import { sendEmail } from '@shared/lib';
+import { OrderSuccessTemplate } from '@shared/components/shared/email-tamplates/order-success';
+import { PaymentCallbackData } from '../../../../@types/yookassa';
+import { prisma } from '../../../../prisma/prisma-client';
 
 export async function POST(req: NextRequest) {
   try {

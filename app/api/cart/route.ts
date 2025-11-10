@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/prisma/prisma-client';
+import { prisma } from '../../../prisma/prisma-client';
 import crypto from 'crypto';
-import { findOrCreateCart } from '@/shared/lib/find-or-create-cart';
-import { CreateCartItemValues } from '@/shared/services/dto/cartDTO';
-import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount';
+import { findOrCreateCart } from '@shared/lib/find-or-create-cart';
+import { CreateCartItemValues } from '@shared/api/dto/cart';
+import { updateCartTotalAmount } from '@entities/cart/lib/update-cart-total-amount';
 
 export async function GET(req: NextRequest) {
   try {

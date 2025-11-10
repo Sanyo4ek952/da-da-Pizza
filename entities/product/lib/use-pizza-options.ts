@@ -1,10 +1,10 @@
 'use client';
 import React, { useEffect } from 'react';
-import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
+import { PizzaSize, PizzaType } from '@shared/constants/pizza';
 import { useSet } from 'react-use';
-import { getAvailablePizzaSizes } from '@/shared/lib/get-available-pizza-sizes';
+import { getAvailablePizzaSizes } from '@entities/product/lib/get-available-pizza-sizes';
 import { ProductItem } from '@prisma/client';
-import { Variant } from '@/shared/components/shared/group-variants';
+import { Variant } from '@shared/components/shared/group-variants';
 
 interface ReturnProps {
   size: PizzaSize;

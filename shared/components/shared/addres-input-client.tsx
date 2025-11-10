@@ -2,7 +2,10 @@
 import dynamic from 'next/dynamic';
 
 const AddressInput = dynamic(
-  () => import('@/shared/components').then((mod) => mod.AddressInput),
+  () =>
+    import('@features/checkout/ui/address-input').then(
+      (mod) => mod.AddressInput
+    ),
   {
     ssr: false,
     loading: () => (

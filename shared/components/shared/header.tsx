@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@shared/lib/utils';
 import Image from 'next/image';
 import {
   AuthModal,
@@ -8,7 +8,7 @@ import {
   Container,
   ProfileButton,
   SearchInput,
-} from '@/shared/components/shared';
+} from '@shared/components/shared';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';

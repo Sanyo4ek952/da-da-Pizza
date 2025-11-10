@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { CheckoutItemDetails } from '@entities/checkout/ui/checkout-item-details';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
 import { Button, Skeleton } from '@shared/ui';
-import { WhiteBlock } from '@/shared/components/shared/white-block';
-import { cn } from '@/shared/lib/utils';
+import { WhiteBlock } from '@shared/components';
+import { cn } from '@shared/lib/utils';
 
 interface Props {
   className?: string;

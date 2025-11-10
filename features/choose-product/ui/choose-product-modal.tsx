@@ -1,7 +1,6 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
 import { cn } from '@shared/lib/utils';
-import { ProductWithRelations } from '@/@types/prisma';
 import { ProductForm } from '@shared/components/shared';
 import {
   Dialog,
@@ -10,6 +9,7 @@ import {
   DialogTitle,
 } from '@shared/ui/dialog';
 import { useRouter } from 'next/navigation';
+import { ProductWithRelations } from '../../../@types/prisma';
 
 interface Props {
   className?: string;

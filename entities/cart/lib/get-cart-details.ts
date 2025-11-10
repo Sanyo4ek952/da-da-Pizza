@@ -1,5 +1,5 @@
-import { CartDTO } from '@/shared/services/dto/cartDTO';
-import { calcCartItemTotalPrice } from '@/shared/lib/calc-cart-item-total-price';
+import { CartDTO } from '@shared/api/dto/cart';
+import { calcCartItemTotalPrice } from '@entities/cart/lib/calc-cart-item-total-price';
 
 export interface CartStateItems {
   id: number;

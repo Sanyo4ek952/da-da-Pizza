@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useIntersection } from 'react-use';
 import { ProductCard, Title } from '@shared/components/shared';
 import { cn } from '@shared/lib/utils';
-import { useCategoryStore } from '@shared/store/category';
-import { ProductWithRelations } from '@/@types/prisma';
+import { useCategoryStore } from '@entities/category/model/store';
+import { ProductWithRelations } from '../../../@types/prisma';
 
 interface Props {
   className?: string;

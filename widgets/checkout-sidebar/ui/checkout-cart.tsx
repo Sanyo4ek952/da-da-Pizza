@@ -6,7 +6,7 @@ import {
 } from '@shared/components/shared';
 import { getCartItemDetails } from '@shared/lib';
 import { PizzaSize, PizzaType } from '@shared/constants/pizza';
-import { CartStateItems } from '@shared/lib/get-cart-details';
+import { CartStateItems } from '@entities/cart/lib/get-cart-details';
 
 interface Props {
   className?: string;

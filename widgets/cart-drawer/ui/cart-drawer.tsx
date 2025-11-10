@@ -16,7 +16,7 @@ import {
   SheetTrigger,
 } from '@shared/ui/sheet';
 import { CartDrawerItem } from '@widgets/cart-drawer/ui/cart-drawer-item';
-import { useCart } from '@shared/hooks/use-cart';
+import { useCart } from '@entities/cart/model/use-cart';
 import { PizzaSize, PizzaType } from '@shared/constants/pizza';
 import { getCartItemDetails } from '@shared/lib';
 import { Title } from '@shared/components/shared/title';

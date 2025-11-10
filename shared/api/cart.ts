@@ -1,5 +1,5 @@
-import { axiosInstance } from '@/shared/services/instance';
-import { CartDTO, CreateCartItemValues } from '@/shared/services/dto/cartDTO';
+import { axiosInstance } from '@shared/api/client';
+import { CartDTO, CreateCartItemValues } from '@shared/api/dto/cart';
 
 export const getCart = async (): Promise<CartDTO> => {
   return (await axiosInstance.get<CartDTO>('/cart')).data;

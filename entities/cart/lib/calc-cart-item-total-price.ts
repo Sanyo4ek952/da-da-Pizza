@@ -1,4 +1,4 @@
-import { CartItemDTO } from '../services/dto/cartDTO';
+import { CartItemDTO } from '@shared/api/dto/cart';
 
 export const calcCartItemTotalPrice = (item: CartItemDTO): number => {
   const ingredientsPrice = item.ingredients.reduce(

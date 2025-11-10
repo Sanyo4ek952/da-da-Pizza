@@ -1,5 +1,5 @@
-import { mapPizzaType, PizzaSize, PizzaType } from '@/shared/constants/pizza';
-import { CartStateItems } from '@/shared/lib/get-cart-details';
+import { mapPizzaType, PizzaSize, PizzaType } from '@shared/constants/pizza';
+import { CartStateItems } from '@entities/cart/lib/get-cart-details';
 
 export const getCartItemDetails = (
   ingredients: CartStateItems['ingredients'],
