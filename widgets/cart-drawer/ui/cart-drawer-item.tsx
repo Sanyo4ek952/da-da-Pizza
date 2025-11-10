@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@shared/lib/utils';
-import * as CartItem from '@shared/components/shared/cart-item-details';
+import * as CartItem from '@entities/cart/ui/index';
 import { CartItemProps } from '@entities/cart/model/cart-item-details.types';
 import { CountButton } from '@shared/components/shared/count-button';
 import { Trash2Icon } from 'lucide-react';

@@ -1,8 +1,8 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@shared/lib/utils';
 import { ProductWithRelations } from '@/@types/prisma';
-import { ProductForm } from '@/shared/components/shared';
+import { ProductForm } from '@shared/components/shared';
 import {
   Dialog,
   DialogContent,

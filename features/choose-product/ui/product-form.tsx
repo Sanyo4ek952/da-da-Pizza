@@ -1,10 +1,10 @@
 'use client';
 import { FC } from 'react';
-import { useCartStore } from '@/shared/store';
+import { useCartStore } from '@shared/store';
 import toast from 'react-hot-toast';
 import { ProductWithRelations } from '@/@types/prisma';
-import { ChoosePizzaForm } from '@/shared/components/shared/choose-pizza-form';
-import { ChooseProductForm } from '@/shared/components/shared/choose-product-form';
+import { ChoosePizzaForm } from '@shared/components/shared/choose-pizza-form';
+import { ChooseProductForm } from '@features/choose-product/ui/choose-product-form';
 
 interface Props {
   product: ProductWithRelations;
