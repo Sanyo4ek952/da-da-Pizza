@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from 'react';
 import {
   FilterCheckbox,
   FilterCheckboxProps,
-} from '@/shared/components/shared/filter-checkbox';
+} from '@shared/ui/filter-checkbox';
 import { Input, Skeleton } from '@shared/ui';
 
 type Item = FilterCheckboxProps;

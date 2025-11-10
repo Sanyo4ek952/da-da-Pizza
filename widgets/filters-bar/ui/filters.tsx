@@ -4,9 +4,9 @@ import {
   CheckboxFiltersGroup,
   RangeSlider,
   Title,
-} from '@/shared/components/shared';
+} from '@shared/components/shared';
 import { Input } from '@shared/ui';
-import { useFilters, useIngredients, useQueryFilters } from '@/shared/hooks';
+import { useFilters, useIngredients, useQueryFilters } from '@shared/hooks';
 
 interface Props {
   className?: string;
