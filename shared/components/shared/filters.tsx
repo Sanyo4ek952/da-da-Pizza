@@ -5,7 +5,7 @@ import {
   RangeSlider,
   Title,
 } from '@/shared/components/shared';
-import { Input } from '@/shared/components/ui';
+import { Input } from '@shared/ui';
 import { useFilters, useIngredients, useQueryFilters } from '@/shared/hooks';
 
 interface Props {

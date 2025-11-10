@@ -4,7 +4,7 @@ import {
   FilterCheckbox,
   FilterCheckboxProps,
 } from '@/shared/components/shared/filter-checkbox';
-import { Input, Skeleton } from '@/shared/components/ui';
+import { Input, Skeleton } from '@shared/ui';
 
 type Item = FilterCheckboxProps;
 

@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { registerUser } from '@/app/actions';
 import { formRegisterSchema, TFormRegisterValues } from './schemas';
 import { FormInput } from '../../../form';
-import { Button } from '@/shared/components/ui';
+import { Button } from '@shared/ui';
 
 interface Props {
   onClose?: VoidFunction;

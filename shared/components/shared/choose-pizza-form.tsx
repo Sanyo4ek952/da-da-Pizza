@@ -7,7 +7,7 @@ import {
   PizzaImage,
   Title,
 } from '@/shared/components/shared';
-import { Button } from '@/shared/components/ui';
+import { Button } from '@shared/ui';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { getPizzaDetails, usePizzaOptions } from '@/shared/lib';

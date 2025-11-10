@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import Link from 'next/link';
 import { Title } from '@/shared/components/shared';
-import { Button } from '@/shared/components/ui';
+import { Button } from '@shared/ui';
 import { Plus } from 'lucide-react';
 import { Ingredient } from '@prisma/client';
 

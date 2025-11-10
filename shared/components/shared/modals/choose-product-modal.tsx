@@ -8,7 +8,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from '@/shared/components/ui/dialog';
+} from '@shared/ui/dialog';
 import { useRouter } from 'next/navigation';
 
 interface Props {

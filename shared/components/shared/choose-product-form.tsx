@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { cn } from '@/shared/lib/utils';
 import { Title } from '@/shared/components/shared';
-import { Button } from '@/shared/components/ui';
+import { Button } from '@shared/ui';
 
 interface Props {
   imageUrl: string;

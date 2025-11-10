@@ -13,7 +13,7 @@ import { signOut } from 'next-auth/react';
 import { Container } from './container';
 import { Title } from './title';
 import { FormInput } from './form';
-import { Button } from '../ui';
+import { Button } from '../../ui';
 import { updateUserInfo } from '@/app/actions';
 
 interface Props {
