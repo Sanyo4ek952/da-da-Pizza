@@ -1,5 +1,5 @@
-import { axiosInstance } from '@/shared/services/instance';
-import { PaymentData } from '@/@types/yookassa';
+import { axiosInstance } from '@shared/api/client';
+import { PaymentData } from '../../@types/yookassa';
 
 interface Props {
   description: string;

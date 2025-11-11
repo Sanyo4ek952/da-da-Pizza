@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from '../ui/button';
+import { Button } from '@shared/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Title } from './title';
 import Link from 'next/link';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@shared/lib/utils';
 
 interface Props {
   title: string;

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@shared/lib/utils';
 import { CircleCheck } from 'lucide-react';
 
 interface Props {

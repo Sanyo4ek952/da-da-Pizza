@@ -1,9 +1,9 @@
-export { calcTotalPizzaPrice } from './calc-total-pizza-price';
-export { getAvailablePizzaSizes } from './get-available-pizza-sizes';
-export { usePizzaOptions } from './use-pizza-options';
-export { getPizzaDetails } from './get-pizza-details';
-export { getCartItemDetails } from './get-cart-item-details';
-export { getCartDetails } from './get-cart-details';
-export { calcCartItemTotalPrice } from './calc-cart-item-total-price';
+export { calcTotalPizzaPrice } from '@entities/product/lib/calc-total-pizza-price';
+export { getAvailablePizzaSizes } from '@entities/product/lib/get-available-pizza-sizes';
+export { usePizzaOptions } from '@entities/product/lib/use-pizza-options';
+export { getPizzaDetails } from '@entities/product/lib/get-pizza-details';
+export { getCartItemDetails } from '@entities/cart/lib/get-cart-item-details';
+export { getCartDetails } from '@entities/cart/lib/get-cart-details';
+export { calcCartItemTotalPrice } from '@entities/cart/lib/calc-cart-item-total-price';
 export { sendEmail } from './send-email-resend';
 export { createPayment } from './create-paymant';

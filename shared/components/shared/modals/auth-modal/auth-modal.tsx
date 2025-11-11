@@ -1,10 +1,10 @@
 'use client';
 import { FC, useState } from 'react';
-import { Button, Dialog } from '@/shared/components';
-import { DialogContent, DialogTitle } from '@/shared/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@shared/ui/dialog';
 import { signIn } from 'next-auth/react';
-import { LoginForm } from '@/shared/components/shared/modals/auth-modal/forms/login-form';
-import { RegisterForm } from '@/shared/components/shared/modals/auth-modal/forms/register-form';
+import { LoginForm } from '@shared/components/shared/modals/auth-modal/forms/login-form';
+import { RegisterForm } from '@shared/components/shared/modals/auth-modal/forms/register-form';
+import { Button } from '@shared/ui';
 
 interface Props {
   open: boolean;

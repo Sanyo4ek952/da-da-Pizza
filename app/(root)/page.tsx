@@ -5,8 +5,8 @@ import {
   Stories,
   Title,
   TopBar,
-} from '@/shared/components/shared';
-import { findPizzas, GetSearchParams } from '@/shared/lib/find-pizzas';
+} from '@shared/components/shared';
+import { findPizzas, GetSearchParams } from '@shared/lib/find-pizzas';
 
 export default async function Home({
   searchParams,

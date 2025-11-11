@@ -1,4 +1,4 @@
-import { CartItemDTO } from '@/shared/services/dto/cartDTO';
+import { CartItemDTO } from '@shared/api/dto/cart';
 
 interface EmailTemplateProps {
   orderId: number;

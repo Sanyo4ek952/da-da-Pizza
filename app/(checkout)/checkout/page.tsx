@@ -1,22 +1,18 @@
 'use client';
 
-import {
-  CheckoutAddressForm,
-  CheckoutCart,
-  CheckoutPersonalForm,
-  CheckoutSidebar,
-  Container,
-  Title,
-} from '@/shared/components/shared';
-import { useCart } from '@/shared/hooks';
+import { CheckoutSidebar, Container, Title } from '@shared/components/shared';
+import { useCart } from '@shared/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
-import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
+import { checkoutFormSchema, CheckoutFormValues } from '@shared/constants';
 import toast from 'react-hot-toast';
-import { createOrder } from '@/app/actions';
+import { createOrder } from '@app/actions';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { Api } from '@/shared/services/api-client';
+import { Api } from '@shared/api';
+import { CheckoutCart } from '@widgets/checkout-sidebar/ui/checkout-cart';
+import { CheckoutPersonalForm } from '@features/checkout/ui/checkout-personal-form';
+import { CheckoutAddressForm } from '@features/checkout/ui/checkout-address-form';
 
 export default function CheckoutPage() {
   const [submitting, setSubmitting] = useState(false);

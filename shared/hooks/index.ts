@@ -1,4 +1,4 @@
 export { useFilters } from './use-filters';
 export { useIngredients } from './use-ingredients';
 export { useQueryFilters } from './use-query-filters';
-export { useCart } from './use-cart';
+export { useCart } from '@entities/cart/model/use-cart';
