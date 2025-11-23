@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import { WhiteBlock } from '@shared/components/shared/white-block';
+import { WhiteBlock, ErrorText } from '@shared/ui';
 import { FormTextarea } from '@shared/components/shared/form';
-import { ErrorText } from '@shared/components';
 import { Controller, useFormContext } from 'react-hook-form';
-import AddressInputClient from '@shared/components/shared/addres-input-client';
+import AddressInputClient from './address-input-client';
 
 interface Props {
   className?: string;

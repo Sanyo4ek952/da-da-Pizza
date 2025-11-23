@@ -3,7 +3,8 @@ import { FC } from 'react';
 import toast from 'react-hot-toast';
 import { ProductWithRelations } from '../../../@types/prisma';
 import { useCartStore } from '@entities/cart/model/store';
-import { ChoosePizzaForm, ChooseProductForm } from '@shared/components';
+import { ChoosePizzaForm } from './choose-pizza-form';
+import { ChooseProductForm } from './choose-product-form';
 
 interface Props {
   product: ProductWithRelations;

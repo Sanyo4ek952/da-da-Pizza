@@ -3,7 +3,7 @@
 import { Api } from '@shared/api';
 import { IStory } from '@shared/api/stories';
 import React from 'react';
-import { Container } from './container';
+import { Container } from '@shared/ui';
 import { cn } from '@shared/lib/utils';
 import { X } from 'lucide-react';
 import ReactStories from 'react-insta-stories';

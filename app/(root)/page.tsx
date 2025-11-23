@@ -1,11 +1,8 @@
-import {
-  Container,
-  Filters,
-  ProductGroupList,
-  Stories,
-  Title,
-  TopBar,
-} from '@shared/components/shared';
+import { Container, Title } from '@shared/ui';
+import { Filters } from '@widgets/filters-bar/ui/filters';
+import { ProductGroupList } from '@widgets/product-list/ui/product-group-list';
+import { Stories } from '@widgets/stories/ui/stories';
+import { TopBar } from '@widgets/top-bar/ui/top-bar';
 import { findPizzas, GetSearchParams } from '@shared/lib/find-pizzas';
 
 export default async function Home({

@@ -1,7 +1,7 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
 import { cn } from '@shared/lib/utils';
-import { ProductForm } from '@shared/components/shared';
+import { ProductForm } from '@features/choose-product/ui/product-form';
 import {
   Dialog,
   DialogContent,

@@ -5,7 +5,8 @@ import {
   TFormLoginValues,
 } from '@shared/components/shared/modals/auth-modal/forms/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, FormInput, Title } from '@shared/components';
+import { Button, Title } from '@shared/ui';
+import { FormInput } from '@shared/components/shared/form';
 import toast from 'react-hot-toast';
 import { signIn } from 'next-auth/react';
 
