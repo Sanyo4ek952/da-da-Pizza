@@ -1,6 +1,7 @@
 'use client';
 import { useFormContext } from 'react-hook-form';
-import { ClearButton, Textarea } from '@shared/ui';
+import { Textarea } from '@shared/ui/textarea';
+import { ClearButton } from '../clear-button';
 import { FC, TextareaHTMLAttributes } from 'react';
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {

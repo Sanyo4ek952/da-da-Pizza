@@ -1,6 +1,6 @@
 'use client';
 import React, { FC } from 'react';
-import { Button } from '@shared/ui';
+import { Button } from '@shared/components';
 import { CircleUser, User } from 'lucide-react';
 import { cn } from '@shared/lib/utils';
 import Link from 'next/link';

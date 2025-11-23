@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { CheckoutItem } from '@entities/checkout/ui/checkout-item';
-import { CheckoutItemSkeleton } from '@entities/checkout/ui/checkout-item-skeleton';
-import { WhiteBlock } from '@shared/ui';
+import {
+  CheckoutItem,
+  CheckoutItemSkeleton,
+  WhiteBlock,
+} from '@shared/components/shared';
 import { getCartItemDetails } from '@shared/lib';
 import { PizzaSize, PizzaType } from '@shared/constants/pizza';
 import { CartStateItems } from '@entities/cart/lib/get-cart-details';

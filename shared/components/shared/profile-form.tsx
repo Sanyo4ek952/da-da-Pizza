@@ -6,12 +6,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import {
   formRegisterSchema,
   TFormRegisterValues,
-} from '@shared/components/shared/modals/auth-modal/forms/schemas';
+} from './modals/auth-modal/forms/schemas';
 import { User } from '@prisma/client';
 import toast from 'react-hot-toast';
 import { signOut } from 'next-auth/react';
-import { Container, Title, Button } from '@shared/ui';
-import { FormInput } from '@shared/components/shared/form';
+import { Container } from './container';
+import { Title } from './title';
+import { FormInput } from './form';
+import { Button } from '../../ui';
 import { updateUserInfo } from '@app/actions';
 
 interface Props {

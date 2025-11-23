@@ -1,7 +1,6 @@
 'use client';
 
-import { CheckoutSidebar } from '@widgets/checkout-sidebar/ui/checkout-sidebar';
-import { Container, Title } from '@shared/ui';
+import { CheckoutSidebar, Container, Title } from '@shared/components/shared';
 import { useCart } from '@shared/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -43,7 +42,7 @@ export default function CheckoutPage() {
     if (session) {
       fetchUserInfo();
     }
-  }, [form, session]);
+  }, [session]);
   const onClickCountButton = (
     id: number,
     quantity: number,

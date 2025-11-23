@@ -1,4 +1,4 @@
-import { ChooseProductModal } from '@features/choose-product/ui/choose-product-modal';
+import { ChooseProductModal } from '@shared/components/shared';
 import { notFound } from 'next/navigation';
 import { prisma } from '../../../../../prisma/prisma-client';
 

@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '@shared/lib/utils';
 import Image from 'next/image';
-import { AuthModal } from '@shared/components/shared/modals/auth-modal/auth-modal';
-import { Container } from '@shared/ui';
-import { CartButton } from '@widgets/cart-drawer/ui/cart-button';
-import { ProfileButton } from './profile-button';
-import { SearchInput } from './search-input';
+import {
+  AuthModal,
+  CartButton,
+  Container,
+  ProfileButton,
+  SearchInput,
+} from '@shared/components/shared';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
