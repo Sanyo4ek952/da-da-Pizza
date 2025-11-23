@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getUserSession } from '@shared/lib/get-user-session';
 import { prisma } from '../../../prisma/prisma-client';
-import { ProfileForm } from '@shared/components';
+import { ProfileForm } from '@features/profile/ui/profile-form';
 
 export default async function ProfilePage() {
   const session = await getUserSession();

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { FormInput, WhiteBlock } from '@shared/components/shared';
+import { WhiteBlock } from '@shared/ui';
+import { FormInput } from '@shared/components/shared/form';
 
 interface Props {
   className?: string;

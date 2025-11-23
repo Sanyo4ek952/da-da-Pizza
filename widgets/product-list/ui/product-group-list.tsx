@@ -1,7 +1,8 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useIntersection } from 'react-use';
-import { ProductCard, Title } from '@shared/components/shared';
+import { ProductCard } from '@entities/product/ui/product-card';
+import { Title } from '@shared/ui';
 import { cn } from '@shared/lib/utils';
 import { useCategoryStore } from '@entities/category/model/store';
 import { ProductWithRelations } from '../../../@types/prisma';

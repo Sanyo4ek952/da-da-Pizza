@@ -7,7 +7,7 @@ import { getUserSession } from '@shared/lib/get-user-session';
 import { CheckoutFormValues } from '@shared/constants';
 import { prisma } from '../prisma/prisma-client';
 import { createPayment, sendEmail } from '@shared/lib';
-import { PayOrderTemplate } from '@shared/components';
+import { PayOrderTemplate } from '@shared/components/shared/email-tamplates/pay-order';
 import { VerificationUserTemplate } from '@shared/components/shared/email-tamplates/verification-user';
 
 export async function createOrder(data: CheckoutFormValues) {

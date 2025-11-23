@@ -1,10 +1,7 @@
 'use client';
 import React from 'react';
-import {
-  CheckboxFiltersGroup,
-  RangeSlider,
-  Title,
-} from '@shared/components/shared';
+import { RangeSlider, Title } from '@shared/ui';
+import { CheckboxFiltersGroup } from './checkbox-filters-group';
 import { Input } from '@shared/ui';
 import { useFilters, useIngredients, useQueryFilters } from '@shared/hooks';
 
