@@ -2,12 +2,7 @@
 import { FC, InputHTMLAttributes } from 'react';
 
 import { useFormContext } from 'react-hook-form';
-import {
-  ClearButton,
-  ErrorText,
-  Input,
-  RequiredSymbol,
-} from '@shared/components';
+import { ClearButton, ErrorText, Input, RequiredSymbol } from '@shared/ui';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Button } from '@shared/ui';
 import { ArrowRight, ShoppingCart } from 'lucide-react';
 import { cn } from '@shared/lib/utils';
-import { CartDrawer } from '@shared/components/shared';
+import { CartDrawer } from './cart-drawer';
 import { useCartStore } from '@entities/cart/model/store';
 
 interface Props {

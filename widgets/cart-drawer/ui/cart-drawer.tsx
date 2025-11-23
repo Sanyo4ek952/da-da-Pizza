@@ -19,7 +19,7 @@ import { CartDrawerItem } from '@widgets/cart-drawer/ui/cart-drawer-item';
 import { useCart } from '@entities/cart/model/use-cart';
 import { PizzaSize, PizzaType } from '@shared/constants/pizza';
 import { getCartItemDetails } from '@shared/lib';
-import { Title } from '@shared/components/shared/title';
+import { Title } from '@shared/ui/title';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
