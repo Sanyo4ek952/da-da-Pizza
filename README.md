@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍕 Da-Da Pizza — онлайн-магазин пиццы
 
-## Getting Started
+**Da-Da Pizza** — полнофункциональный интернет-магазин пиццы на **Next.js + TypeScript** с продуманной архитектурой,
+серверным рендерингом, авторизацией и оплатой через **YooKassa**.  
+Проект показывает, как я работаю с реальным продуктом: от фильтрации и корзины до почтовых уведомлений и интеграции
+платежей.
 
-First, run the development server:
+🔗 **Продакшн:** https://da-da-pizza.vercel.app/
+
+---
+
+## 🚀 Основные возможности
+
+1. **Фильтрация товаров с серверным рендерингом**
+    - Полноценная фильтрация пицц и других товаров
+    - Параметры фильтрации и сортировки хранятся в **URI** (query-параметры)
+    - SEO-дружественные страницы с **SSR/Server Actions**
+
+2. **Каталог и корзина**
+    - Вывод списка товаров с бэкенда (Prisma + PostgreSQL)
+    - Добавление/удаление товаров в корзину
+    - Управление состоянием корзины на клиенте
+
+3. **Авторизация и регистрация**
+    - Логин/регистрация по **логину и паролю**
+    - OAuth-авторизация через **GitHub** и **Google**
+    - Основано на **NextAuth**
+
+4. **Подтверждение аккаунта**
+    - Отправка письма с подтверждением на E-Mail
+    - Переход по ссылке активирует аккаунт
+
+5. **Личный кабинет**
+    - Редактирование профиля пользователя
+    - Обновление личных данных
+
+6. **Оплата через YooKassa**
+    - Покупка товаров с помощью **YooKassa**
+    - Обработка статуса платежа
+    - Создание заказа после успешной оплаты
+
+7. **Parallel Routes**
+    - Вывод товара в **модальном окне** или на **отдельной странице**
+    - Использование **Parallel Routes** Next.js для гибкой навигации
+
+8. **Почтовые уведомления**
+    - Отправка писем при:
+        - регистрации
+        - создании заказа
+        - успешной оплате
+    - Используется **Resend** для отправки почты
+
+9. **Инфраструктура**
+    - **Vercel** — деплой приложения и хранение данных БД
+    - Продакшн-конфигурация для реальной эксплуатации
+
+10. **Клиентские и серверные компоненты на практике**
+    - Разделение логики между **server components** и **client components**
+    - Реальные примеры применения (а не только теория из документации)
+
+---
+
+## ⚙️ Технологии
+
+1. **Next.js**
+
+2. **TypeScript**
+
+3. **TailwindCSS + ShadCN UI**
+
+4. **Prisma + PostgreSQL**
+
+5. **NextAuth**
+
+6. **React Hook Form + Zod**
+
+7. **Zustand**
+
+8. **react-use**
+
+9. **nextjs-toploader**
+
+10. **react-hot-toast**
+
+11. **react-insta-stories**
+
+12. **lucide-react**
+
+13. **Resend**
+
+---
+
+## 🧱 Архитектура и структура проекта
+
+Проект построен с опорой на идеи **Feature-Sliced Design (FSD)** и разделение ответственности:
+
+- Разделение на **entities / features / shared / widgets / pages (или app)**
+- Выделение:
+    - бизнес-логики (оформление заказов, корзина, авторизация)
+    - UI-слоя (компоненты, кнопки, формы)
+    - низкоуровневых утилит (API-клиенты, конфиг, хелперы)
+
+Это упрощает:
+
+- масштабирование проекта,
+- поддержку и рефакторинг,
+- добавление новых фич без слома существующего кода.
+
+*(Структура может отличаться в зависимости от текущей реализации, но общий подход — модульность и FSD.)*
+
+---
+
+## 🛠 Запуск проекта локально
+
+### 1. Клонировать репозиторий
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Sanyo4ek952/da-da-pizza.git
+cd da-da-pizza
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Установить зависимости
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Настроить переменные окружения
 
-## Learn More
+Создайте файл `.env.local` и добавьте необходимые переменные (пример):
 
-To learn more about Next.js, take a look at the following resources:
+```env
+DATABASE_URL=postgresql://user:password@host:port/dbname
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GITHUB_ID=your_github_client_id
+GITHUB_SECRET=your_github_client_secret
 
-## Deploy on Vercel
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+YOOKASSA_SHOP_ID=your_yookassa_shop_id
+YOOKASSA_SECRET_KEY=your_yookassa_secret
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+RESEND_API_KEY=your_resend_api_key
+```
+
+*(Список переменных можно дополнить в зависимости от актуальной конфигурации проекта.)*
+
+### 4. Запустить dev-сервер
+
+```bash
+pnpm dev
+```
+
+Приложение будет доступно по адресу:  
+http://localhost:3000
+
+---
+
+## 🧑‍💻 Автор
+
+**Александр Афанасьев** — Frontend Developer (React / TypeScript / Next.js)
+Открыт для предложений по удалённой работе и проектной разработке.
+
+---
+
+Если проект вам понравился — буду рад ⭐ в репозитории 🙂
