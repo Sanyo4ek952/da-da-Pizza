@@ -47,6 +47,7 @@
     "react-insta-stories": "^2.8.0",
     "react-use": "^17.6.0",
     "resend": "^6.1.2",
+    "swiper": "^12.0.3",
     "tailwind-merge": "^2.2.2",
     "ts-node": "^10.9.2",
     "vaul": "^1.1.2",
