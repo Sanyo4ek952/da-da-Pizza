@@ -15,19 +15,19 @@ export default async function Home({
 
   return (
     <>
-      <Container className={'mt-10'}>
+      <Container className={'my-10 '}>
         <Title text={'Все товары'} size={'lg'} className={'font-extrabold'} />
-      </Container>
-      <TopBar
-        categories={categories.filter(
-          (category) => category.products.length > 0
-        )}
-      />
-      <FiltersModal className={''} />
-      <Stories />
-      <Container className={'pb-14 mt-10 '}>
+
+        <TopBar
+          categories={categories.filter(
+            (category) => category.products.length > 0
+          )}
+        />
+
+        <FiltersModal className={'xl:hidden block '} />
+        <Stories className={'mb-5'} />
         <div className={'flex gap-[80px]'}>
-          <div className={'w-[250px]'}>
+          <div className={'w-[250px] xl:block hidden'}>
             <Filters />
           </div>
           <div className="flex-1">
