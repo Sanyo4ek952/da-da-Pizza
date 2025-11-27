@@ -1,8 +1,7 @@
 'use client';
 import React from 'react';
-import { RangeSlider, Title } from '@shared/ui';
+import { Button, Input, RangeSlider, Title } from '@shared/ui';
 import { CheckboxFiltersGroup } from './checkbox-filters-group';
-import { Input } from '@shared/ui';
 import { useFilters, useIngredients, useQueryFilters } from '@shared/hooks';
 
 interface Props {
@@ -113,6 +112,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         onClickCheckbox={filters.setSelectedIngredients}
         selectedValues={filters.selectedIngredients}
       />
+      <Button onClick={filters.resetFilters}>Сбросить фильтры</Button>
     </div>
   );
 };

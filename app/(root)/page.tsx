@@ -4,6 +4,7 @@ import { ProductGroupList } from '@widgets/product-list/ui/product-group-list';
 import { Stories } from '@widgets/stories/ui/stories';
 import { TopBar } from '@widgets/top-bar/ui/top-bar';
 import { findPizzas, GetSearchParams } from '@shared/lib/find-pizzas';
+import { FiltersModal } from '@features/filters/ui/filters-modal';
 
 export default async function Home({
   searchParams,
@@ -11,6 +12,7 @@ export default async function Home({
   searchParams: Promise<GetSearchParams>;
 }) {
   const categories = await findPizzas(await searchParams);
+
   return (
     <>
       <Container className={'mt-10'}>
@@ -21,6 +23,7 @@ export default async function Home({
           (category) => category.products.length > 0
         )}
       />
+      <FiltersModal />
       <Stories />
       <Container className={'pb-14 mt-10 '}>
         <div className={'flex gap-[80px]'}>
