@@ -21,7 +21,7 @@ export const ProfileButton: FC<Props> = ({ className, onClickSignIn }) => {
           className={cn('flex items-center gap-1')}
         >
           <User size={16} />
-          Войти
+          <span className={'max-xs:hidden'}>Войти</span>
         </Button>
       ) : (
         <Link href={'/profile'}>

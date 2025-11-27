@@ -22,6 +22,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        'max-xs': { max: '500px' }, // до 640px включительно
+      },
       fontFamily: {
         sans: ['var(--font-nunito)', 'sans-serif'],
       },

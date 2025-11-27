@@ -44,23 +44,32 @@ export const Header: React.FC<Props> = ({
   }, []);
 
   return (
-    <header className={cn(' border-b', className)}>
-      <Container className={'flex items-center justify-between py-8'}>
+    <header className={cn('flex flex-col border-b', className)}>
+      <Container
+        className={'flex w-full gap-5 items-center justify-between py-8'}
+      >
         <Link href="/">
           <div className={'flex items-center gap-4'}>
+            <Image
+              src={'/logo.png'}
+              alt={'logo'}
+              className={'min-w-8'}
+              width={35}
+              height={35}
+            />
+
             <div>
-              <Image src={'/logo.png'} alt={'logo'} width={35} height={35} />
-            </div>
-            <div>
-              <h1 className={'text-2xl uppercase font-black'}>Next Pizza</h1>
-              <p className={'text-sm text-gray-400 leading-3'}>
+              <h1 className={'text-2xl uppercase font-black max-xs:text-xl'}>
+                Next Pizza
+              </h1>
+              <p className={'text-sm text-gray-400 leading-3 max-xs:hidden'}>
                 вкусней уже некуда
               </p>
             </div>
           </div>
         </Link>
         {hasSearch && (
-          <div className="mx-10 flex-1">
+          <div className="mx-10 flex-1 md:block hidden">
             <SearchInput />
           </div>
         )}
@@ -74,6 +83,9 @@ export const Header: React.FC<Props> = ({
           {hasCart && <CartButton />}
         </div>
       </Container>
+      <div className="mx-6 flex-1 mb-3">
+        <SearchInput className={' mobile-vision'} />
+      </div>
     </header>
   );
 };
