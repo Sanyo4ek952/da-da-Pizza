@@ -41,7 +41,7 @@ export const Header: React.FC<Props> = ({
         });
       }, 1000);
     }
-  }, []);
+  }, [router, searchParams]);
 
   return (
     <header className={cn('flex flex-col border-b', className)}>
