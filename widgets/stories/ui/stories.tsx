@@ -1,31 +1,21 @@
 'use client';
 
-import { Api } from '@shared/api';
 import { IStory } from '@shared/api/stories';
 import React from 'react';
 import { Container } from '@shared/ui';
 import { cn } from '@shared/lib/utils';
-import { X } from 'lucide-react';
-import ReactStories from 'react-insta-stories';
 import Image from 'next/image';
+import { useStories } from '@shared/hooks/use-stories';
+import { ItemStory } from '@widgets/stories/ui/item-story';
 
 interface Props {
   className?: string;
 }
 
 export const Stories: React.FC<Props> = ({ className }) => {
-  const [stories, setStories] = React.useState<IStory[]>([]);
+  const { stories } = useStories();
   const [open, setOpen] = React.useState(false);
   const [selectedStory, setSelectedStory] = React.useState<IStory>();
-
-  React.useEffect(() => {
-    async function fetchStories() {
-      const data = await Api.stories.getAll();
-      setStories(data);
-    }
-
-    fetchStories();
-  }, []);
 
   const onClickStory = (story: IStory) => {
     setSelectedStory(story);
@@ -63,29 +53,11 @@ export const Stories: React.FC<Props> = ({ className }) => {
           />
         ))}
 
-        {open && (
-          <div className="absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-30">
-            <div className="relative" style={{ width: 520 }}>
-              <button
-                className="absolute -right-10 -top-5 z-30"
-                onClick={() => setOpen(false)}
-              >
-                <X className="absolute top-0 right-0 w-8 h-8 text-white/50" />
-              </button>
-
-              <ReactStories
-                onAllStoriesEnd={() => setOpen(false)}
-                stories={
-                  selectedStory?.items.map((item) => ({
-                    url: item.sourceUrl,
-                  })) || []
-                }
-                defaultInterval={3000}
-                width={520}
-                height={800}
-              />
-            </div>
-          </div>
+        {open && selectedStory && (
+          <ItemStory
+            selectedStory={selectedStory}
+            closeStory={() => setOpen(false)}
+          />
         )}
       </Container>
     </>
