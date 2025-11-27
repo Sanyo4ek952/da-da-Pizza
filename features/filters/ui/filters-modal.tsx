@@ -9,10 +9,14 @@ import {
 } from '@shared/ui/dialog';
 import { cn } from '@shared/lib/utils';
 
-export const FiltersModal = () => {
+interface Props {
+  className?: string;
+}
+
+export const FiltersModal = ({ className }: Props) => {
   const [openFilters, setOpenFilters] = useState(false);
   return (
-    <>
+    <div className={cn(className)}>
       <Button onClick={() => setOpenFilters((prev) => !prev)}>Filters</Button>
       {openFilters && (
         <Dialog onOpenChange={setOpenFilters} open={openFilters}>
@@ -25,6 +29,6 @@ export const FiltersModal = () => {
           </DialogContent>
         </Dialog>
       )}
-    </>
+    </div>
   );
 };

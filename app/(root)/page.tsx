@@ -23,7 +23,7 @@ export default async function Home({
           (category) => category.products.length > 0
         )}
       />
-      <FiltersModal />
+      <FiltersModal className={''} />
       <Stories />
       <Container className={'pb-14 mt-10 '}>
         <div className={'flex gap-[80px]'}>
