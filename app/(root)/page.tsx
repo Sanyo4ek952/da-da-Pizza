@@ -24,7 +24,7 @@ export default async function Home({
           )}
         />
 
-        <FiltersModal className={'xl:hidden block '} />
+        <FiltersModal className={'xl:hidden block mx-4 my-5'} />
         <Stories className={'mb-5'} />
         <div className={'flex gap-[80px]'}>
           <div className={'w-[250px] xl:block hidden'}>

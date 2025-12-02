@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Filters } from '@widgets/filters-bar/ui/filters';
-import { Button, Dialog } from '@shared/ui';
+import { Button, Container, Dialog } from '@shared/ui';
 import { DialogContent } from '@shared/ui/dialog';
 import { cn } from '@shared/lib/utils';
 
@@ -12,9 +12,9 @@ interface Props {
 export const FiltersModal = ({ className }: Props) => {
   const [openFilters, setOpenFilters] = useState(false);
   return (
-    <div className={cn(className)}>
+    <Container className={cn(className)}>
       <Button
-        className={'w-full mx-4 mb-5'}
+        className={'w-full '}
         onClick={() => setOpenFilters((prev) => !prev)}
       >
         Filters
@@ -22,10 +22,10 @@ export const FiltersModal = ({ className }: Props) => {
       {openFilters && (
         <Dialog onOpenChange={setOpenFilters} open={openFilters}>
           <DialogContent className={cn(' bg-white overflow-hidden')}>
-            <Filters className={'p-4'} />
+            <Filters className={''} />
           </DialogContent>
         </Dialog>
       )}
-    </div>
+    </Container>
   );
 };
