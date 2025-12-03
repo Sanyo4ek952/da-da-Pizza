@@ -1,7 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
 
-import { useSet } from 'react-use';
 import { useCallback, useMemo, useState } from 'react';
 
 interface PriceProps {
@@ -36,25 +35,38 @@ export const useFilters = (): ReturnProps => {
     string
   >;
 
-  const [
-    selectedIngredients,
-    { toggle: toggleIngredients, reset: resetIngredients },
-  ] = useSet(new Set<string>(searchParams.get('ingredients')?.split(',')));
+  const createSetFromParams = (value?: string | null) => {
+    return new Set<string>(value ? value.split(',').filter(Boolean) : []);
+  };
 
-  const [sizes, { toggle: toggleSizes, reset: resetSizes }] = useSet(
-    new Set<string>(
-      searchParams.get('sizes') ? searchParams.get('sizes')?.split(',') : []
-    )
+  const [selectedIngredients, setSelectedIngredientsState] = useState<
+    Set<string>
+  >(() => createSetFromParams(searchParams.get('ingredients')));
+
+  const [sizes, setSizesState] = useState<Set<string>>(() =>
+    createSetFromParams(searchParams.get('sizes'))
   );
 
-  const [pizzaTypes, { toggle: togglePizzaTypes, reset: resetPizzaTypes }] =
-    useSet(
-      new Set<string>(
-        searchParams.get('pizzaTypes')
-          ? searchParams.get('pizzaTypes')?.split(',')
-          : []
-      )
-    );
+  const [pizzaTypes, setPizzaTypesState] = useState<Set<string>>(() =>
+    createSetFromParams(searchParams.get('pizzaTypes'))
+  );
+
+  const toggleSetValue = useCallback((value: string, cb: typeof setSizesState) => {
+    cb((prev) => {
+      const updatedSet = new Set(prev);
+
+      if (updatedSet.has(value)) {
+        updatedSet.delete(value);
+      } else {
+        updatedSet.add(value);
+      }
+
+      return updatedSet;
+    });
+  }, []);
+
+  const resetSet = useCallback((cb: typeof setSizesState) => cb(new Set()), []);
+
   const [prices, setPrices] = useState<PriceProps>({
     priceFrom: Number(searchParams.get('priceFrom')) || undefined,
     priceTo: Number(searchParams.get('priceTo')) || undefined,
@@ -63,11 +75,11 @@ export const useFilters = (): ReturnProps => {
     setPrices((prev) => ({ ...prev, [name]: value }));
   };
   const resetFilters = useCallback(() => {
-    resetSizes();
-    resetPizzaTypes();
-    resetIngredients();
+    resetSet(setSizesState);
+    resetSet(setPizzaTypesState);
+    resetSet(setSelectedIngredientsState);
     setPrices({ priceFrom: undefined, priceTo: undefined });
-  }, [resetIngredients, resetPizzaTypes, resetSizes]);
+  }, [resetSet]);
   return useMemo(
     () => ({
       sizes,
@@ -75,9 +87,10 @@ export const useFilters = (): ReturnProps => {
       selectedIngredients,
       prices,
       setPrices: updatePrice,
-      setPizzaTypes: togglePizzaTypes,
-      setSizes: toggleSizes,
-      setSelectedIngredients: toggleIngredients,
+      setPizzaTypes: (value: string) => toggleSetValue(value, setPizzaTypesState),
+      setSizes: (value: string) => toggleSetValue(value, setSizesState),
+      setSelectedIngredients: (value: string) =>
+        toggleSetValue(value, setSelectedIngredientsState),
       resetFilters,
     }),
     [
@@ -85,9 +98,7 @@ export const useFilters = (): ReturnProps => {
       pizzaTypes,
       selectedIngredients,
       prices,
-      togglePizzaTypes,
-      toggleSizes,
-      toggleIngredients,
+      toggleSetValue,
       resetFilters,
     ]
   );
