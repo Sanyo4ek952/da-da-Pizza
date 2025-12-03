@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { cn } from '@shared/lib/utils';
-import { Title } from '@shared/ui';
-import { Button } from '@shared/ui';
+import { Button, Title } from '@shared/ui';
 
 interface Props {
   imageUrl: string;
