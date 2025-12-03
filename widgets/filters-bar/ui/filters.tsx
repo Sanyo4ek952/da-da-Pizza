@@ -112,6 +112,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         onClickCheckbox={filters.setSelectedIngredients}
         selectedValues={filters.selectedIngredients}
       />
+
       <Button className={'mt-4'} onClick={filters.resetFilters}>
         Сбросить фильтры
       </Button>
