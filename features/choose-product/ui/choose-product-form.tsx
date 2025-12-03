@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Ingredient, ProductItem } from '@prisma/client';
 import { cn } from '@shared/lib/utils';
 import { Button, Title } from '@shared/ui';
+import Image from 'next/image';
 
 interface Props {
   imageUrl: string;
@@ -24,28 +25,30 @@ export const ChooseProductForm: FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={cn(className, 'flex flex-1')}>
+    <div className={cn(className, 'flex flex-1 flex-row  max-xs:flex-col')}>
       <div
         className={cn(
-          'flex items-center justify-center flex-1 relative w-full',
+          'flex items-center justify-center flex-1 relative w-full ',
           className
         )}
       >
-        <img
+        <Image
           src={imageUrl}
           alt="Logo"
+          width={350}
+          height={350}
           className={cn(
-            'relative left-2 top-2 transition-all z-10 duration-300 w-[350px] h-[350px]',
+            'relative left-2 top-2 transition-all z-10 duration-300 w-[180px] h-[180px]',
             {}
           )}
         />
       </div>
-      <div className="w-[490px] bg-[#f7f6f5] p-7">
+      <div className=" bg-[#f7f6f5] p-7 flex-1">
         <Title text={name} size={'md'} className={'font-extrabold mb-1'} />
         <Button
           loading={loading}
           onClick={() => onSubmit(id)}
-          className="h-[55px] px-10  text-base rounded-[18px] w-full mt-10"
+          className="h-[55px] md:px-10  text-base rounded-[18px] w-full mt-10"
         >
           Добавить в корзину за {price} ₽
         </Button>
