@@ -22,8 +22,8 @@ export const FiltersModal = ({ className }: Props) => {
       {openFilters && (
         <Dialog onOpenChange={setOpenFilters} open={openFilters}>
           <DialogTitle className={'none'}></DialogTitle>
-          <DialogContent className={cn(' bg-white overflow-hidden')}>
-            <Filters className={''} />
+          <DialogContent className={cn('bg-white overflow-x-scroll h-full ')}>
+            <Filters className={'w-full'} />
           </DialogContent>
         </Dialog>
       )}
