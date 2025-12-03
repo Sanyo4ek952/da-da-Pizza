@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { cn } from '@shared/lib/utils';
 import { Categories } from '@widgets/filters-bar/ui/categories';
