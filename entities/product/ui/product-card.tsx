@@ -24,32 +24,35 @@ export const ProductCard: React.FC<Props> = ({
   id,
 }) => {
   return (
-    <div className={cn(className)}>
-      <Link href={`/product/${id}`}>
-        <div className="flex justify-center p-6 bg-secondary rounded-lg ">
-          <Image width={215} height={215} src={imgUrl} alt={name} />
-        </div>
-        <Title
-          text={name}
-          size={'sm'}
-          className={'mb-1 mt-3 font-bold max-xs:text-lg'}
-        />
+    <Link
+      href={`/product/${id}`}
+      className={cn('flex flex-col gap-1', className)}
+    >
+      <div className="flex justify-center p-6 bg-secondary rounded-lg ">
+        <Image width={215} height={215} src={imgUrl} alt={name} />
+      </div>
+      <Title
+        text={name}
+        size={'sm'}
+        className={'mb-1 mt-3 font-bold max-xs:text-lg'}
+      />
 
-        <p className={'text-sm text-gray-400 '}>
-          {ingredients.map((ingredient) => ingredient.name).join(', ')}
-        </p>
-        <div
-          className={'flex justify-between items-center mt-4 max-xs:flex-col'}
-        >
-          <span className={'text-[20px] max-xs:text-lg'}>
-            от <b>{price}</b>
-          </span>
-          <Button variant={'secondary'}>
-            <Plus size={20} className=" mr-1" />
-            Добавить
-          </Button>
-        </div>
-      </Link>
-    </div>
+      <p className={'text-sm text-gray-400 grow'}>
+        {ingredients.map((ingredient) => ingredient.name).join(', ')}
+      </p>
+      <div
+        className={
+          'flex justify-between items-center gap-2 mt-4 max-xs:flex-col'
+        }
+      >
+        <span className={'text-[20px] max-xs:text-lg'}>
+          от <b>{price}</b>
+        </span>
+        <Button variant={'secondary'}>
+          <Plus size={20} className=" mr-1" />
+          Добавить
+        </Button>
+      </div>
+    </Link>
   );
 };

@@ -103,6 +103,10 @@ html {
     display: block;
 }
 
+.scroll-offset {
+    scroll-margin-top: 140px;
+}
+
 @media (min-width: 768px) {
     .mobile-hidden {
         display: block;
@@ -110,5 +114,9 @@ html {
 
     .mobile-vision {
         display: none;
+    }
+
+    .scroll-offset {
+        scroll-margin-top: 100px;
     }
 }

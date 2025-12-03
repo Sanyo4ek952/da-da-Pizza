@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '@shared/lib/utils';
+import Image from 'next/image';
 
 interface Props {
   className?: string;
@@ -8,6 +9,11 @@ interface Props {
 }
 
 export const PizzaImage: React.FC<Props> = ({ imageUrl, size, className }) => {
+  const sizeClasses = {
+    20: 'w-[180px] h-[180px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px]',
+    30: 'w-[220px] h-[220px] sm:w-[330px] sm:h-[330px] md:w-[400px] md:h-[400px]',
+    40: 'w-[260px] h-[260px] sm:w-[380px] sm:h-[380px] md:w-[500px] md:h-[500px]',
+  };
   return (
     <div
       className={cn(
@@ -15,21 +21,28 @@ export const PizzaImage: React.FC<Props> = ({ imageUrl, size, className }) => {
         className
       )}
     >
-      <img
+      <Image
+        width={500}
+        height={500}
         src={imageUrl}
-        alt="Logo"
+        alt="Pizza"
         className={cn(
           'relative left-2 top-2 transition-all z-10 duration-300',
-          {
-            'w-[300px] h-[300px]': size === 20,
-            'w-[400px] h-[400px]': size === 30,
-            'w-[500px] h-[500px]': size === 40,
-          }
+          sizeClasses[size]
         )}
       />
 
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dashed border-2 rounded-full border-gray-200 w-[450px] h-[450px]" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dotted border-2 rounded-full border-gray-100 w-[370px] h-[370px]" />
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dashed border-2 rounded-full border-gray-200  w-[280px] h-[280px]
+        sm:w-[380px] sm:h-[380px]
+        md:w-[370px] md:h-[370px]"
+      />
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dotted border-2 rounded-full border-gray-100
+       w-[220px] h-[220px]
+        sm:w-[300px] sm:h-[300px]
+        md:w-[370px] md:h-[370px]"
+      />
     </div>
   );
 };

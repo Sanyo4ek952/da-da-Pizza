@@ -37,6 +37,7 @@ export default async function Home({
                   category.products.length > 0 && (
                     <ProductGroupList
                       key={category.id}
+                      className={'scroll-offset'}
                       title={category.name}
                       items={category.products}
                       categoryId={category.id}
