@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Filters } from '@widgets/filters-bar/ui/filters';
 import { Button, Container, Dialog } from '@shared/ui';
-import { DialogContent } from '@shared/ui/dialog';
+import { DialogContent, DialogTitle } from '@shared/ui/dialog';
 import { cn } from '@shared/lib/utils';
 
 interface Props {
@@ -21,6 +21,7 @@ export const FiltersModal = ({ className }: Props) => {
       </Button>
       {openFilters && (
         <Dialog onOpenChange={setOpenFilters} open={openFilters}>
+          <DialogTitle className={'none'}></DialogTitle>
           <DialogContent className={cn(' bg-white overflow-hidden')}>
             <Filters className={''} />
           </DialogContent>
