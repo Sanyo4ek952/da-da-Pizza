@@ -9,7 +9,12 @@ const nunito = Nunito({
   variable: '--font-nunito',
   weight: ['400', '500', '600', '700', '800', '900'],
 });
-
+export const metadata = {
+  title: 'Da Da Pizza',
+  icons: {
+    icon: '/logo.png',
+  },
+};
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -17,10 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${nunito.variable} antialiased`}>
-      <head>
-        <link data-rh="true" rel={'icon'} href={'/logo.png'} />
-      </head>
-
       <body className={`${nunito.variable} antialiased`}>
         <Suspense fallback={<div>Загрузка...</div>}>
           <Providers>{children}</Providers>
