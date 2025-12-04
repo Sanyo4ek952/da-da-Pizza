@@ -9,7 +9,7 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
     <>
       <SessionProvider>{children}</SessionProvider>
       <Toaster />
-      <NextTopLoader />
+      <NextTopLoader showSpinner={false} />
     </>
   );
 };

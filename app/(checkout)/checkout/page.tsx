@@ -1,7 +1,7 @@
 'use client';
 
 import { CheckoutSidebar } from '@widgets/checkout-sidebar/ui/checkout-sidebar';
-import { Container, Title } from '@shared/ui';
+import { Title } from '@shared/ui';
 import { useCart } from '@shared/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -71,7 +71,7 @@ export default function CheckoutPage() {
     }
   };
   return (
-    <Container className={'mt-10'}>
+    <div className={'mt-10'}>
       <Title
         text={'Оформление заказа'}
         size={'lg'}
@@ -79,8 +79,8 @@ export default function CheckoutPage() {
       />
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className={'flex gap-10'}>
-            <div className={'flex flex-col gap-10 flex-1 mb-20 '}>
+          <div className={'flex lg:flex-row flex-col gap-10'}>
+            <div className={'flex flex-col gap-10 flex-1 lg:mb-20 '}>
               <CheckoutCart
                 loading={loading}
                 items={items}
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
                 className={loading ? 'opacity-40 pointer-events-none' : ''}
               />
             </div>
-            <div className={'w-[450px]'}>
+            <div className={'lg:w-[450px ]'}>
               <CheckoutSidebar
                 loading={loading || submitting}
                 totalAmount={totalAmount}
@@ -103,6 +103,6 @@ export default function CheckoutPage() {
           </div>
         </form>
       </FormProvider>
-    </Container>
+    </div>
   );
 }
