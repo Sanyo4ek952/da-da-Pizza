@@ -16,8 +16,10 @@ const SwiperStories = ({ stories, onClickStory }: Props) => {
     <Swiper
       spaceBetween={10}
       slidesPerView={4}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       className={'flex'}
       breakpoints={{
         640: {
