@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { IStory } from '@shared/api/stories';
 import Image from 'next/image';
 import 'swiper/css';
+import { Autoplay } from 'swiper/modules';
 
 interface Props {
   className?: string;
@@ -16,6 +17,7 @@ const SwiperStories = ({ stories, onClickStory }: Props) => {
     <Swiper
       spaceBetween={10}
       slidesPerView={4}
+      modules={[Autoplay]}
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,
