@@ -28,10 +28,10 @@ export const ChooseProductModal: FC<Props> = ({ className, product }) => {
 
   return (
     <Dialog onOpenChange={setOpen} open={open}>
-      <DialogDescription>
+      <DialogDescription className={'hidden'}>
         Здесь вы можете выбрать размер и ингредиенты для вашей пиццы.
       </DialogDescription>
-      <DialogTitle>Описание пиццы</DialogTitle>
+      <DialogTitle className={'hidden'}>Описание пиццы</DialogTitle>
       <DialogContent
         className={cn(
           className,
