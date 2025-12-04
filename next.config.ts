@@ -6,11 +6,16 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['cdn.inappstory.ru'],
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'cdn.inappstory.ru',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'media.dodostatic.net',
+        pathname: '/**',
       },
     ],
   },
