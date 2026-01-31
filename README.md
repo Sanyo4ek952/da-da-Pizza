@@ -130,21 +130,20 @@ pnpm install
 Создайте файл `.env.local` и добавьте необходимые переменные (пример):
 
 ```env
-DATABASE_URL=postgresql://user:password@host:port/dbname
+YOOKASSA_CALLBACK_URL=
+NEXTAUTH_SECRET=
+RESEND_API_KEY=
+YOOKASSA_API_KEY=
+YOOKASSA_STORE_ID=
+GITHUB_ID=
+GITHUB_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+POSTGRES_URL=
+PRISMA_DATABASE_URL=
+DATABASE_URL=
+NEXT_PUBLIC_API_URL=
 
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_nextauth_secret
-
-GITHUB_ID=your_github_client_id
-GITHUB_SECRET=your_github_client_secret
-
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-
-YOOKASSA_SHOP_ID=your_yookassa_shop_id
-YOOKASSA_SECRET_KEY=your_yookassa_secret
-
-RESEND_API_KEY=your_resend_api_key
 ```
 
 _(Список переменных можно дополнить в зависимости от актуальной конфигурации проекта.)_
