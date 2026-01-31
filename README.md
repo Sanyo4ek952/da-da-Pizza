@@ -143,10 +143,7 @@ POSTGRES_URL=
 PRISMA_DATABASE_URL=
 DATABASE_URL=
 NEXT_PUBLIC_API_URL=
-
 ```
-
-_(Список переменных можно дополнить в зависимости от актуальной конфигурации проекта.)_
 
 ### 4. Запустить dev-сервер
 
